@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* styles/fonts.css */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -17,11 +23,41 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: black;
+  font-family: 'Rubik', sans-serif;
+}
+
+/* for 768px */
+/* Blog Whole Page CSS */
+@media screen and (max-width: 768px){
+  /* Blog Whole Page CSS */
+  .BlogContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .latestBlog {
+    width: 100%;
+  }
+
+  .Searchbar{
+    width: 100%;
+  }
+
+  /* For Home Page Content after Bio */
+  .SocalLinks{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .ContainerForHomePage{
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .latestProject{
+    width: 100%;
+    padding-top: 5px ;
+  }
 }
