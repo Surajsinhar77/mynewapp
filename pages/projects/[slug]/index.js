@@ -27,7 +27,6 @@ export default function Project() {
             tags : ['react.js', 'node.js','express.js', 'mongodb','Redux']
         },
     ]
-    console.log(ProjectList)
     return (
         <>
             <div className="w-9/12 m-auto">
