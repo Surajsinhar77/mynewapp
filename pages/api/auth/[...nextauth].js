@@ -2,8 +2,8 @@ import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider  from 'next-auth/providers/credentials'
 
+
 const authOptions = {
-  // Configure one or more authentication providers
     providers: [
       CredentialsProvider({
         name: "Credentials",
@@ -31,10 +31,10 @@ const authOptions = {
         }
 
       }),
-      // GithubProvider({
-      //   clientId: "554ef0348ffe2f772683",
-      //   clientSecret: "5c2b724c4d4d9773a277967e3eb05a66089aeb68",
-      // }),
+      GithubProvider({
+        clientId: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      }),
     ],
     callbacks: {
       async jwt(token, user) {
