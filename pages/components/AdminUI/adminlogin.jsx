@@ -1,12 +1,6 @@
 import Image from "next/image";
-import { useState , useEffect} from "react";
-
 
 export default function AdminalPage(){
-
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [remenber, setRemember] = useState(false);
 
     return(
         <div className="flex h-full">
