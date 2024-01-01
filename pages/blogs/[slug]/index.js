@@ -1,13 +1,14 @@
 'use client'
+
 import { useParams } from "next/navigation";
-import Navbar from "@/app/components/navbar";
-import Footer from "@/app/components/Footer";
+import Navbar from "../../components/navbar";
+import Footer from "../../components/Footer";
 import Image from "next/image";
-import Blogs from "@/app/components/Blogs";
+import Blogs from "../../components/Blogs";
 
 export default function Page() {
     const params  = useParams();
-
+    console.log(params);
     const BlogsContent = [
         {
             userId: 1,
@@ -69,7 +70,7 @@ export default function Page() {
                         <div className="blogAreaContent flex">
                             <div className="blogArea w-9/12  rounded-lg mr-7">
                                 <div className="forTitle my-10">
-                                    <h1 className="text-6xl capitalize">{BlogsContent[params.slug].title}</h1>
+                                    <h1 className="text-6xl capitalize">{BlogsContent[params?.slug]?.title}</h1>
                                 </div>
                                 <div className="forBlogImage ">
                                     <span className="">
