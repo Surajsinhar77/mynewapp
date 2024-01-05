@@ -11,7 +11,6 @@ const authOptions = {
           email: { label: "email", type: "email", placeholder: "name123@gmail.com" },
           password: { label: "Password", type: "password" }
         },
-
         async authorize(credentials, req) {
           
           console.log(req.body);
