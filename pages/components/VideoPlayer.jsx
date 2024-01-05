@@ -17,7 +17,7 @@ export default function VideoPlayer(){
         <Paper elevation={3} className="w-full p-4 ">
             <video ref={videoRef} controls className="w-full">
                 <source
-                    src="https://www.w3schools.com/html/mov_bbb.mp4"
+                    src="https://youtu.be/dxnCcVa-PQE.mp4"
                     type="video/mp4"
                 />
                 Your browser does not support the video tag.

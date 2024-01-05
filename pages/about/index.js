@@ -41,12 +41,12 @@ export default function About() {
         {
             name : "StackOver Clone",
             date : [10,"Sep",2022],
-            tags : ['react.js', 'node.js','express.js', 'mongodb','Redux']
+            tags : ['react.js', 'node.js','express.js', 'mongodb','Redux'],
         },
         {
         	name : "My Portfolio",
         	date : [10, 'Aug', 2023],
-        	tags : ['Next.js', 'node.js', 'express.js', 'mongodb', 'react.js']
+        	tags : ['Next.js', 'node.js', 'express.js', 'mongodb', 'react.js'],
         },
     ]
     
