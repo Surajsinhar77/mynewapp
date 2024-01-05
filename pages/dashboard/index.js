@@ -1,10 +1,10 @@
-// "use client"
+"use client"
 // import { useContext, useState } from 'react';
 // import { useSession, signIn, signOut } from "next-auth/react"
 
 // import Image from 'next/image';
 
-// export default function Dashboard(){
+export default function Dashboard(){
 //     const [userName, setUserName] = useState("default");
 //     const {data:session} = useSession();
 //     if (session){
@@ -22,10 +22,10 @@
 //             </>   
 //         )  
 //     }  
-//     return (    
-//         <>      
-//             Not signed in <br />      
-//             <button onClick={() => signIn()}>Sign in</button>    
-//             </>  
-//         )
-// };
+    return (    
+            <>      
+                Not signed in <br />      
+                {/* <button onClick={() => signIn()}>Sign in</button>     */}
+            </>  
+        )
+};
