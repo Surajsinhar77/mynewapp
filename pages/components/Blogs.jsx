@@ -17,7 +17,7 @@ export default function Blogs({element, index}){
             </div>
             <div className="contentPreview mt-4">
                 <p>
-                    {element.body}
+                    {element?.body}
                 </p>
             </div>
             <div className="BlogBtn mt-5 text-blue-400 font-light">

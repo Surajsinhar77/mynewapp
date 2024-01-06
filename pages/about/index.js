@@ -12,7 +12,7 @@ import {BiMailSend} from 'react-icons/bi';
 import {FaLinkedinIn} from 'react-icons/fa6';
 import {CgWebsite} from 'react-icons/cg';
 import Link from 'next/link';
-
+import projectList from "./../projectList.json";
 
 export default function About() {
     const [switching, setSwitchingData] =useState(1);
@@ -23,33 +23,9 @@ export default function About() {
         4:dynamic(()=>import('../components/Achievements')),
         5:dynamic(()=>import('../components/ResumeViewer')),
     }
-    const SubRouter = subRouterComponents[switching] ||null;
+    const SubRouter = subRouterComponents[switching] || null;
 
-
-    const ProjectList =[
-        {
-            name : "e-Commarce VegMarket Store",
-            date : [2,"Sep",2023],
-            tags : ['next.js', 'react.js', 'node.js','express.js', 'mongodb']
-        },
-
-        {
-            name : "Hostel Management System",
-            date : [10,"Sep",2022],
-            tags : ['Bootstrap', 'HTML', 'Javascript','Flask', 'Python', 'MySql']
-        },
-        {
-            name : "StackOver Clone",
-            date : [10,"Sep",2022],
-            tags : ['react.js', 'node.js','express.js', 'mongodb','Redux'],
-        },
-        {
-        	name : "My Portfolio",
-        	date : [10, 'Aug', 2023],
-        	tags : ['Next.js', 'node.js', 'express.js', 'mongodb', 'react.js'],
-        },
-    ]
-    
+    const ProjectList = projectList;
     return (
         <>
         <div className="w-9/12 m-auto">

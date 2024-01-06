@@ -4,7 +4,6 @@ import Image from "next/image"
 import Link from "next/link";
 
 export default function ProjectCard({project,index}) {
-  console.log(project.images[0])
   return (
       <>
         <div className="cardBody w-80 border m-auto bg-white shadow-md rounded-lg overflow-hidden mb-5">
@@ -18,8 +17,8 @@ export default function ProjectCard({project,index}) {
                 </div>
 
                 <div className="nameAndDate">
-                  <h4 className="textsm">{project.name}</h4>
-                  <p className="text-xs">{`${project.date[1]} - ${project.date[0]} - ${project.date[2]} To Aug - 31 - 2023 `}</p>
+                  <h4 className="textsm">{project?.name}</h4>
+                  <p className="text-xs">{`${project?.date[1]} - ${project?.date[0]} - ${project?.date[2]} To Aug - 31 - 2023 `}</p>
                 </div>
             </div>
 
@@ -39,10 +38,10 @@ export default function ProjectCard({project,index}) {
             <p className="p-3 text-xs">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed saepe nihil sunt non odio tempora rem.</p>
           </div>
 
-          <h2 className="text-center">{project.name}</h2>
+          <h2 className="text-center">{project?.name}</h2>
           <div className="useTech p-3 border-t-2 mt-5">
             {
-              project.tags.map((tags,index)=>{
+              project?.tags.map((tags,index)=>{
                 return <button key={index} className="py-1 px-1 text-sm border rounded-md border-blue-400 mr-3 mb-3 text-blue-400">{tags}</button>
               })
             }
