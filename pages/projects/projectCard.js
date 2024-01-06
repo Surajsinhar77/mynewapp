@@ -4,29 +4,7 @@ import Image from "next/image"
 import Link from "next/link";
 
 export default function ProjectCard({project,index}) {
-
-  const ProjectList =[
-    {
-        name : "e-Commarce VegMarket Store",
-        date : [2,"Sep",2023],
-        tags : ['next.js', 'react.js', 'node.js','express.js', 'mongodb'],
-        img : "/Images/homePage.png",
-    },
-
-    {
-        name : "Hostel Management System",
-        date : [10,"Sep",2022],
-        tags : ['Bootstrap', 'HTML', 'Javascript','Flask', 'Python', 'MySql'],
-        img : "/Images/hms/HomePageHMS.png",
-    },
-    {
-        name : "StackOver Clone",
-        date : [10,"Sep",2022],
-        tags : ['react.js', 'node.js','express.js', 'mongodb','Redux'],
-        img : ""
-    },
-  ]
-  
+  console.log(project.images[0])
   return (
       <>
         <div className="cardBody w-80 border m-auto bg-white shadow-md rounded-lg overflow-hidden mb-5">
@@ -53,7 +31,7 @@ export default function ProjectCard({project,index}) {
 
           <div className="productImage w-full hover:bg-gray-200 hover:liner">
             <Link href="/projects/[slug]/" as={`/projects/${index}/`}>
-              <Image src={ProjectList[index]?.img} width="400" height="0" className="h-48" alt="project image" />
+              <Image src={project?.images[0]} width="400" height="0" className="h-48" alt="project image" />
             </Link>
           </div>
 

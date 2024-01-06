@@ -2,27 +2,10 @@ import { FaLinkedin, FaGithub, FaDiscord , FaCode} from "react-icons/fa";
 import Link from 'next/link';
 import ProjectCard from "../projects/projectCard";
 import Blogs from "./Blogs";
-
+import projectList from './../projectList.json';
 export default function Index() {
 
-    const ProjectList =[
-        {
-            name : "e-Commarce VegMarket Store",
-            date : [2,"Sep",2023],
-            tags : ['next.js', 'react.js', 'node.js','express.js', 'mongodb']
-        },
-
-        {
-            name : "Hostel Management System",
-            date : [10,"Sep",2022],
-            tags : ['Bootstrap', 'HTML', 'Javascript','Flask', 'Python', 'MySql']
-        },
-        {
-            name : "StackOver Clone",
-            date : [10,"Sep",2022],
-            tags : ['react.js', 'node.js','express.js', 'mongodb','Redux']
-        },
-    ];
+    const ProjectList = projectList;
 
     const BlogsContent = [
         {
@@ -58,13 +41,37 @@ export default function Index() {
         },
     ];
 
+    const AboutContent = {
+        about : [`I am a software developer with a passion for web development and data structures and algorithms. I have skills in MERN stack (MongoDB, Express, React, and Node.js) and I am learning Next.js to create dynamic and interactive web applications. I have also completed several online courses and projects on various topics such as HTML, CSS, JavaScript, Bootstrap, RESTful APIs, authentication, and deployment.
+        
+        I am currently looking for freelance opportunities in web development where I can apply my skills and knowledge to create innovative and user-friendly websites for clients. I have experience in working with different tools and platforms such as GitHub, Heroku, Netlify, Firebase, and AWS. I can also work with different databases such as MySQL, PostgreSQL, MongoDB, and Firebase.
+        
+        I am always eager to learn new technologies and systems that can enhance my development capabilities and broaden my horizons. I am interested in topics such as cloud computing, machine learning, artificial intelligence, blockchain, and cybersecurity. I also enjoy solving coding challenges and participating in hackathons.
+        
+        If you are interested in my work or want to collaborate with me, please feel free to contact me via email or LinkedIn. I look forward to hearing from you.`]
+    }
+
     return (
         <>
             <div>
                 <div className="myAbout p-7 bg-blue-100 rounded">
                     <h3 className="text-3xl mb-5">Hi &rsquo; Im Suraj.</h3>
                     <p className="font-light text-xl tracking-wide leading-relaxed">
-                        Student of BE CSE 4Yr at CHANDIGARH university. I am a computer science enthusiast. I have done Data Structure and Algorithms from Coding Ninjas and MERN STACK Development from Geeks Of Geeks live, Open to work on any development project which is related to my skill set.
+                        <span>
+                        I am a software developer with a passion for web development and data structures and algorithms. I have skills in MERN stack (MongoDB, Express, React, and Node.js) and I am learning Next.js to create dynamic and interactive web applications. I have also completed several online courses and projects on various topics such as HTML, CSS, JavaScript, Bootstrap, RESTful APIs, authentication, and deployment.
+                        </span>
+                        <br /><br />
+                        <span>
+                        I am currently looking for freelance opportunities in web development where I can apply my skills and knowledge to create innovative and user-friendly websites for clients. I have experience in working with different tools and platforms such as GitHub, Heroku, Netlify, Firebase, and AWS. I can also work with different databases such as MySQL, PostgreSQL, MongoDB, and Firebase.
+                        </span>
+                        <br /><br />
+                        <span>
+                        I am always eager to learn new technologies and systems that can enhance my development capabilities and broaden my horizons. I am interested in topics such as cloud computing, machine learning, artificial intelligence, blockchain, and cybersecurity. I also enjoy solving coding challenges and participating in hackathons.
+                        </span>
+                        <br /><br />
+                        <span>
+                        If you are interested in my work or want to collaborate with me, please feel free to contact me via email or LinkedIn. I look forward to hearing from you.
+                        </span>
                     </p>
                     <h2 className="mt-5 text-2xl underline font-light">
                         Connect Me

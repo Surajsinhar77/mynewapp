@@ -8,7 +8,7 @@ import Blogs from "../../components/Blogs";
 import blogData  from "../blogData.json";
 
 export default function Page({data, index}){
-    
+    console.log(data, index);
     const params  = useParams();
     const BlogsContent = blogData;
     return (
