@@ -7,11 +7,10 @@ import Image from "next/image";
 import Blogs from "../../components/Blogs";
 import blogData  from "../blogData.json";
 
-export default function Page() {
+export default function Page(){
+    
     const params  = useParams();
-    
     const BlogsContent = blogData;
-    
     return (
         <>
             <div className="w-9/12 m-auto">

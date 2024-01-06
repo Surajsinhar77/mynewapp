@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import blogData from "./blogData.json";
 // Blogs page
 
-export default function Blog() {
+export default function Blog(){
     const BlogsContent = blogData;
 
     return (
