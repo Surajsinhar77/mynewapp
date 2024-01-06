@@ -43,7 +43,7 @@ export default function Page() {
                         <div className="mainImage grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto">
                             {
                                 ProjectList.map((project,index)=>{
-                                        return <ProjectCard key={index} project={project} index={index}/>
+                                        return <ProjectCard key={index} projectIndex={index}/>
                                     }
                                 )
                             }
