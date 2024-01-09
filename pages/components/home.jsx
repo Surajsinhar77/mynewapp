@@ -73,13 +73,13 @@ export default function Index() {
                         If you are interested in my work or want to collaborate with me, please feel free to contact me via email or LinkedIn. I look forward to hearing from you.
                         </span>
                     </p>
-                    <h2 className="mt-5 text-2xl underline font-light">
+                    <h2 className="mt-5 text-2xl underline font-light text-green-700">
                         Connect Me
                     </h2>
                     <div className="SocalLinks flex mt-5">
-                        <Link  href="/" className="mr-5 my-3 bg-white border border-gray-300 bottom-1 py-2 px-10 rounded-lg">  <FaLinkedin className="text-blue-700 text-3xl"/>  </Link>
+                        <Link  href="https://www.linkedin.com/in/kumar-suraj-sk/" className="mr-5 my-3 bg-white border border-gray-300 bottom-1 py-2 px-10 rounded-lg">  <FaLinkedin className="text-blue-700 text-3xl"/>  </Link>
 
-                        <Link  href="/" className="mr-5 my-3 bg-white border border-gray-300 bottom-1 py-2 px-10 rounded-lg">  <FaGithub className="text-gray-700 text-3xl"/>  </Link>
+                        <Link  href="/https://github.com/Surajsinhar77" className="mr-5 my-3 bg-white border border-gray-300 bottom-1 py-2 px-10 rounded-lg">  <FaGithub className="text-gray-700 text-3xl"/>  </Link>
 
                         <Link  href="/" className="mr-5 my-3 bg-white border border-gray-300 bottom-1 py-2 px-10 rounded-lg">  <FaDiscord className="text-blue-700 text-3xl"/>  </Link>
 
@@ -91,7 +91,7 @@ export default function Index() {
                 </div>
 
                 <div className="ContainerForHomePage mt-5 w-full flex justify-between">
-                    <div className="latestBlog w-6/12 pr-3">
+                    {/* <div className="latestBlog w-6/12 pr-3">
                         <h3 className="text-2xl">Latest Blog</h3>
 
                         <div className="mx-2 mt-4 h-0.5 rounded-full bg-gray-300"></div>
@@ -102,11 +102,11 @@ export default function Index() {
                                 })
                             }
                         </div>
-                    </div>
-                    <div className="latestProject w-6/12 pl-3">
+                    </div> */}
+                    <div className="latestProject w-full pl-3">
                         <h3 className="text-2xl">Latest Project</h3>
                         <div className="mx-2 mt-4 h-0.5 rounded-full bg-gray-300"></div>
-                        <div className="mx-2 p-5">
+                        <div className="mx-2 p-5 grid xl:grid-flow-col gap-1">
                         {
                             ProjectList.map((project,index)=>{
                                     return <ProjectCard key={index} project={project} index={index}/>
