@@ -11,6 +11,7 @@ export default function Blog(){
         <>
         <div className="w-9/12 m-auto">
             <Navbar />
+            <p className="text-red-500 underline font-bold uppercase text-3xl"> Under the development </p>
             <div className="BlogContainer flex justify-between">
             <div className="Searchbar  w-1/3">
                 <div className="">
