@@ -54,70 +54,26 @@ export default function Navbar() {
 
                         <div className="navationtion navItem w-full max-lg:w-full mr-5 md:flex text-blue-700 hidden text-xl">
                             <div className='flex justify-end w-full items-center max-md:flex-col max-lg:items-end' >
-                            <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500 active: focus:text-gray-400  focus:ring-violet-300' href='/about'>About </Link>
-                            <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500 active: focus:text-gray-400  focus:ring-violet-300'   href='/'>Work </Link>
-                            <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500 active: focus:text-gray-400  focus:ring-violet-300'   href='/projects'>Project </Link>
-                            <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500 active: focus:text-gray-400  focus:ring-violet-300'   href='/blogs'>Blog </Link>
-                            <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500 active: focus:text-gray-400  focus:ring-violet-300'   href='/contact'>Contact </Link>
+                                <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500 active: focus:text-gray-400  focus:ring-violet-300' href='/about'>About </Link>
+                                <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500 active: focus:text-gray-400  focus:ring-violet-300'   href='/'>Work </Link>
+                                <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500 active: focus:text-gray-400  focus:ring-violet-300'   href='/projects'>Project </Link>
+                                <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500 active: focus:text-gray-400  focus:ring-violet-300'   href='/blogs'>Blog </Link>
+                                <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500 active: focus:text-gray-400  focus:ring-violet-300'   href='/contact'>Contact </Link>
                             </div>
                         </div>
 
                         <div id="mobile-menu" className={`md:hidden mt-2 ${isMobileMenuOpen ? '' : 'hidden'} text-xl`}>
                             <div className='flex justify-around w-full items-center max-md:flex-col max-lg:items-start' >
-                            <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' href='/about'>About </Link>
-                            <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500'   href='/'>Work </Link>
-                            <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500'   href='/projects'>Project </Link>
-                            <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500'   href='/blogs'>Blog </Link>
-                            <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500'   href='/contact'>Contact </Link>
-                                {/* <Link href="/" className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to=""> Home </Link>
-                                <Link href="/" className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="service"> Smartphone </Link>
-                                <Link href="/" className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="contact"> Contact </Link>
-                                <Link href="/" className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="about"> About </Link>
-                                <Link href="/" className='max-lg:px-1 max-lg:text-lg mx-1 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' to="profile"> Profile </Link> */}
+                                <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500' href='/about'>About </Link>
+                                <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500'   href='/'>Work </Link>
+                                <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500'   href='/projects'>Project </Link>
+                                <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500'   href='/blogs'>Blog </Link>
+                                <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500'   href='/contact'>Contact </Link>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        
-                    </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-            {/* <header className="flex my-20 m-auto w-full">
-                <div className="profilePic">
-                    <Image 
-                        src='/Images/profile.png'
-                        width={100}
-                        height={100}
-                        alt="Picture of author"
-                        className="rounded-full"
-                    />
-                </div>
-                <div className="navbar flex flex-col justify-between ml-9">
-                    <div className="PersonName">
-                        <h3 className="text-3xl uppercase font-bold"> 
-                            <span className="pb-2 border-blue-300">
-                                <Link href="/">Suraj Kumar</Link>
-                            </span>
-                        </h3>
-                    </div>
-                    <div className="navLink text-xl uppercase tracking-wider font-medium">
-                        <ul className="flex">
-                            <Link className="mr-5  hover:text-blue-400  active: focus:text-gray-400  focus:ring-violet-300" href='/about'>About </Link>
-                            <Link className="mr-5  hover:text-blue-400" href='/'>Work </Link>
-                            <Link className="mr-5  hover:text-blue-400" href='/projects'>Project </Link>
-                            <Link className="mr-5  hover:text-blue-400" href='/blogs'>Blog </Link>
-                            <Link className="mr-5  hover:text-blue-400" href='/contact'>Contact </Link>
-                        </ul>
-                    </div>
-                </div>
-            </header> */}
         </>
     )
 }

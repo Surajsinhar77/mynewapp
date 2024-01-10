@@ -11,9 +11,8 @@ import projectList from "./../../projectList.json";
 export default function Project() {
   const params = useParams();
   const ProjectList = projectList;
-  const homePagePageImageFolder = `/Images/${
-    ProjectList[params?.slug]?.imgFolderName
-  }/homepage0.png`;
+  const homePagePageImageFolder = `/Images/${ProjectList[params?.slug]?.imgFolderName
+    }/homepage0.png`;
   const [mainPageImage, setMainImage] = useState(homePagePageImageFolder);
 
   function functionToChange(e) {
@@ -28,41 +27,24 @@ export default function Project() {
         <h1 className="text-3xl my-8 text-center uppercase">
           {ProjectList[params?.slug]?.title}
         </h1>
-        <div className="mainContainer-project border h-full flex w-full">
-          <div className="mainImage p-3 border w-4/5 h-fit">
+        <div className="mainContainer-project border h-full flex w-full max-lg:flex-col">
+          <div className="mainImage p-3 border w-4/5 h-fit max-lg:w-full">
             <div>
-                <img
+              <img
                 src={`${mainPageImage}`}
                 priority={false}
                 alt="Project Image"
-                className="w-full object-cover h-[420px]"
-                />
-            </div>
-            
-            <div className="otherImageOption border flex w-full mt-7 overflow-x-auto">
-                {ProjectList[params?.slug]?.images.map((item, index) => (
-                    <div
-                    key={index}
-                    onClick={(e) => functionToChange(e)}
-                    name={index}
-                    className="imagesOfProject w-28 h-full border m-4 hover:shadow-lg cursor-pointer"
-                    >
-                    <img
-                        src={item}
-                        alt="Project Image"
-                        className="w-full object-cover"
-                    />
-                    </div>
-                ))}
+                className="w-full object-cover h-[420px] max-lg:h-auto"
+              />
             </div>
 
-            {/* <div className="otherImageOption border flex w-[100%] h-fullmt-7 overflow-x-auto">
+            <div className="otherImageOption border flex w-full mt-7 overflow-x-auto max-lg:grid max-lg:grid-cols-2 gap-2 max-lg:h-fit m-auto place-content-center">
               {ProjectList[params?.slug]?.images.map((item, index) => (
                 <div
                   key={index}
                   onClick={(e) => functionToChange(e)}
                   name={index}
-                  className="imagesOfProject w-28 h-full border m-4 hover:shadow-lg cursor-pointer"
+                  className="imagesOfProject w-28 h-fit border m-4 hover:shadow-lg cursor-pointer"
                 >
                   <img
                     src={item}
@@ -70,13 +52,15 @@ export default function Project() {
                     className="w-full object-cover"
                   />
                 </div>
-              ))} 
-            {/* </div> */}
+              ))}
+            </div>
+
+
           </div>
-          <div className="detailInfo p-5 w-1/5">
+          <div className="detailInfo p-5 w-1/5 max-lg:w-full">
             <h1 className="mb-5">NAME : {ProjectList[params?.slug]?.name} </h1>
-            <div className="tags">
-              <span>TAGS : </span>
+            <div className="tags max-lg:flex max-sm:flex-col">
+              <span>TAGS</span>
               {ProjectList[params?.slug]?.tags?.map((tags, index) => {
                 return (
                   <button
@@ -106,10 +90,10 @@ export default function Project() {
         </div>
 
         <div className="mainContainer-project border h-auto flex items-center p-7 my-10 flex-col">
-          <div className="flex justify-center items-center h-screen w-full">
+          <div className="flex justify-center items-center h-auto w-full">
             {/* <VideoPlayer /> */}
             <iframe
-              className="w-full h-3/4"
+              className="w-[720px] h-[360px] max-lg:h-auto"
               src={ProjectList[params?.slug]?.link}
               frameborder="0"
               allowfullscreen
@@ -121,3 +105,21 @@ export default function Project() {
     </>
   );
 }
+
+
+{/* <div className="otherImageOption border flex w-[100%] h-fullmt-7 overflow-x-auto">
+              {ProjectList[params?.slug]?.images.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={(e) => functionToChange(e)}
+                  name={index}
+                  className="imagesOfProject w-28 h-full border m-4 hover:shadow-lg cursor-pointer"
+                >
+                  <img
+                    src={item}
+                    alt="Project Image"
+                    className="w-full object-cover"
+                  />
+                </div>
+              ))} 
+            {/* </div> */}

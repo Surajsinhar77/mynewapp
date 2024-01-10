@@ -6,19 +6,19 @@ export default function Contact() {
         <>
             <div className="contactContainer w-9/12 m-auto">
                 <Navbar/>
-                <div className="subContainer w-9/12 m-auto">
+                <div className="subContainer w-9/12 m-auto max-sm:w-full">
                     <div className="contactHeader">
                         <h2 className="text-4xl">Contact Me</h2>
-                        <p className="text-lg mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, odio pariatur? Blanditiis veniam obcaecati voluptas nemo nobis aut vel velit.</p>
+                        <p className="text-lg mt-4">Thank you for visiting my portfolio, I&rsquo;m excited to connect with you Whether you have a question, a potential project, or just want to say hello, feel free to reach out using the contact form below or through the provided contact details </p>
                     </div>
                     <div className="formContainer mt-4 text-gray-500">
                         <form action="">
-                            <div className="col flex justify-between mt-8">
+                            <div className="col flex justify-between mt-8 max-lg:flex-col">
                                 <div className="row1 flex flex-col w-full mr-2">
                                     <label htmlFor="">NAME <span className="text-red-500 ">*</span> </label>
                                     <input className="focus:outline-none focus:outline-slate-500 focus:border-none rounded-md h-10 border pl-2" type="text" />
                                 </div>
-                                <div className="row1 flex flex-col w-full ml-2">
+                                <div className="row1 flex flex-col w-full ml-2  max-lg:ml-0">
                                     <label htmlFor="">EMAIL <span className="text-red-500 mb-2">*</span></label>
                                     <input className="focus:outline-none focus:outline-slate-500 focus:border-none rounded-md h-10 border pl-2" type="email" />
                                 </div>
