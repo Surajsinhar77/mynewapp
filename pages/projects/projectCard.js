@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function ProjectCard({project,index}) {
   return (
       <>
-        <div className="cardBody w-80 border m-auto bg-white shadow-md rounded-lg overflow-hidden mb-5">
+        <div className="cardBody w-fit border m-auto bg-white shadow-md rounded-lg overflow-hidden mb-5">
           <div className="upperBody flex border items-center justify-between p-2">
             <div className="main part flex items-center">
                 <div className="profile mr-2">
@@ -28,9 +28,9 @@ export default function ProjectCard({project,index}) {
 
           </div>
 
-          <div className="productImage w-full hover:bg-gray-200 hover:liner">
-            <Link href="/projects/[slug]/" as={`/projects/${index}/`}>
-              <Image src={project?.images[0]} width="400" height="0" className="h-48" alt="project image" />
+          <div className="productImage w-full hover:bg-gray-200 hover:liner flex items-center">
+            <Link href="/projects/[slug]/" as={`/projects/${index}/`} className="m-auto">
+              <img src={project?.images[0]} width="400" height="0" className="h-48" alt="project image" />
             </Link>
           </div>
 

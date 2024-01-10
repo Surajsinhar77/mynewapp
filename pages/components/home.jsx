@@ -76,14 +76,14 @@ export default function Index() {
                     <h2 className="mt-5 text-2xl underline font-light text-green-700">
                         Connect Me
                     </h2>
-                    <div className="SocalLinks flex mt-5">
-                        <Link  href="https://www.linkedin.com/in/kumar-suraj-sk/" className="mr-5 my-3 bg-white border border-gray-300 bottom-1 py-2 px-10 rounded-lg">  <FaLinkedin className="text-blue-700 text-3xl"/>  </Link>
+                    <div className="SocalLinks grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 m-auto">
+                        <Link  href="https://www.linkedin.com/in/kumar-suraj-sk/" className="my-3 bg-white border border-gray-300 bottom-1 py-2 px-2 rounded-lg m-auto">  <FaLinkedin className="text-blue-700 text-3xl"/>  </Link>
 
-                        <Link  href="/https://github.com/Surajsinhar77" className="mr-5 my-3 bg-white border border-gray-300 bottom-1 py-2 px-10 rounded-lg">  <FaGithub className="text-gray-700 text-3xl"/>  </Link>
+                        <Link  href="/https://github.com/Surajsinhar77" className=" my-3 bg-white border border-gray-300 bottom-1 py-2 px-2 rounded-lg m-auto">  <FaGithub className="text-gray-700 text-3xl"/>  </Link>
 
-                        <Link  href="/" className="mr-5 my-3 bg-white border border-gray-300 bottom-1 py-2 px-10 rounded-lg">  <FaDiscord className="text-blue-700 text-3xl"/>  </Link>
+                        <Link  href="/" className="my-3 bg-white border border-gray-300 bottom-1 py-2 px-2 rounded-lg m-auto">  <FaDiscord className="text-blue-700 text-3xl"/>  </Link>
 
-                        <Link  href="/" className="mr-5 my-3 bg-white border border-gray-300 bottom-1 py-2 px-10 rounded-lg">  <FaCode className="text-gray-800 text-3xl"/>  </Link>
+                        <Link  href="/" className=" my-3 bg-white border border-gray-300 bottom-1 py-2 px-2 rounded-lg m-auto">  <FaCode className="text-gray-800 text-3xl"/>  </Link>
                     </div>
                     <div className="codingPlateformLink">
 
@@ -106,7 +106,7 @@ export default function Index() {
                     <div className="latestProject w-full pl-3">
                         <h3 className="text-2xl">Latest Project</h3>
                         <div className="mx-2 mt-4 h-0.5 rounded-full bg-gray-300"></div>
-                        <div className="mx-2 p-5 grid xl:grid-flow-col gap-1">
+                        <div className="mx-2 p-5 grid grid-cols-1 md:grid-cols-2 gap-6 m-auto xl:grid-cols-3">
                         {
                             ProjectList.map((project,index)=>{
                                     return <ProjectCard key={index} project={project} index={index}/>

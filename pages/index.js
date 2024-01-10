@@ -4,7 +4,7 @@ import Footer from './components/Footer'
 export default function Home() {
   return (
     < >
-      <div className="w-9/12 m-auto">
+      <div className="w-full sm:w-9/12   sm:m-auto">
         <Navbar/>
         <Index/>
         <Footer/>

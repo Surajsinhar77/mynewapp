@@ -28,7 +28,7 @@ export default function About() {
     const ProjectList = projectList;
     return (
         <>
-        <div className="w-9/12 m-auto">
+        <div className="sm:w-9/12 px-5 m-auto ">
             <Navbar/>
             <div className="mainAboutContainer ">
                 <div className="aboutMeInfo">
@@ -39,31 +39,36 @@ export default function About() {
                     </p>
                 </div>
 
-                <div className="AboutInfo flex mt-7 border">
-                    <div className="menubar w-1/5">
-                        <div onClick={()=>setSwitchingData(1)} className="hover:text-gray-300 cursor-pointer educationOption flex border h-6 items-center p-7">
+                <div className="AboutInfo sm:flex mt-7 border ">
+                    <div className="menubar w-50">
+                        <div onClick={()=>setSwitchingData(1)} 
+                            className="hover:text-gray-300 cursor-pointer educationOption flex border h-6 items-center p-7 ">
                             <FaGraduationCap className='text-lg mr-4'/>
-                            <span >Education</span>
+                            <span  className='w-fit'>Education</span>
                         </div>
-                        <div onClick={()=>setSwitchingData(2)} className="hover:text-gray-300 cursor-pointer educationOption flex border h-6 items-center p-7">
+                        <div onClick={()=>setSwitchingData(2)} 
+                            className="hover:text-gray-300 cursor-pointer educationOption flex border h-6 items-center p-7 ">
                             <FaSuitcase className='text-l mr-4'/>
-                            <span >Expreience</span>
+                            <span  className='w-fit'>Expreience</span>
                         </div>
-                        <div onClick={()=>setSwitchingData(3)} className="hover:text-gray-300 cursor-pointer educationOption flex border h-6 items-center p-7">
+                        <div onClick={()=>setSwitchingData(3)} 
+                            className="hover:text-gray-300 cursor-pointer educationOption flex border h-6 items-center p-7 ">
                             <FaGears className='text-l mr-4'/>
-                            <span>Skills</span>
+                            <span className='w-fit'>Skills</span>
                         </div>
-                        <div  onClick={()=>setSwitchingData(4)} className="hover:text-gray-300 cursor-pointer educationOption flex border h-6 items-center p-7">
+                        <div  onClick={()=>setSwitchingData(4)} 
+                            className="hover:text-gray-300 cursor-pointer educationOption flex border h-6 items-center p-7 ">
                             <GiAchievement className='text-l mr-4'/>
-                            <span>Achievements</span>
+                            <span className='w-fit'>Achievements</span>
                         </div>
-                        <div onClick={()=>setSwitchingData(5)} className="hover:text-gray-300 cursor-pointer educationOption flex border h-6 items-center p-7">
+                        <div onClick={()=>setSwitchingData(5)} 
+                            className="hover:text-gray-300 cursor-pointer educationOption flex border h-6 items-center p-7 ">
                             <FaRegNewspaper className='text-l mr-4'/>
-                            <span>Resume</span>
+                            <span className='w-fit'>Resume</span>
                         </div>
                     </div>
 
-                    <div className="OptionContainer w-4/5 border p-4">
+                    <div className="OptionContainer w-full border p-4">
                         {/* <h1>Eduction</h1> */}
                         <div className="content">
                             {SubRouter  && <SubRouter/>}
