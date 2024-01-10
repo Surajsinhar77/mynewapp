@@ -79,7 +79,7 @@ export default function Index() {
                     <div className="SocalLinks grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 m-auto">
                         <Link  href="https://www.linkedin.com/in/kumar-suraj-sk/" className="my-3 bg-white border border-gray-300 bottom-1 py-2 px-2 rounded-lg m-auto">  <FaLinkedin className="text-blue-700 text-3xl"/>  </Link>
 
-                        <Link  href="/https://github.com/Surajsinhar77" className=" my-3 bg-white border border-gray-300 bottom-1 py-2 px-2 rounded-lg m-auto">  <FaGithub className="text-gray-700 text-3xl"/>  </Link>
+                        <Link  href="https://github.com/Surajsinhar77" className=" my-3 bg-white border border-gray-300 bottom-1 py-2 px-2 rounded-lg m-auto">  <FaGithub className="text-gray-700 text-3xl"/>  </Link>
 
                         <Link  href="/" className="my-3 bg-white border border-gray-300 bottom-1 py-2 px-2 rounded-lg m-auto">  <FaDiscord className="text-blue-700 text-3xl"/>  </Link>
 
