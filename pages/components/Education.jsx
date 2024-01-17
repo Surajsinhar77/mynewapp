@@ -7,7 +7,7 @@ export default function Education() {
                 <div className="headerForEd font-bold">
                     Education
                 </div>
-                <div className="latestAcadmey mt-2 bg-gray-100 p-3">
+                <div className="latestAcadmey mt-2 bg-gray-100 p-3 rounded-lg">
                     <h1 className="SchoolName font-normal">
                         Chandigarh University
                     </h1>
@@ -18,7 +18,7 @@ export default function Education() {
                     </ul>
                 </div>
 
-                <div className="latestAcadmey mt-5 bg-gray-100 p-3">
+                <div className="latestAcadmey mt-5 bg-gray-100 p-3 rounded-lg">
                     <h1 className="SchoolName font-normal">
                         Invertis University
                     </h1>
@@ -29,7 +29,7 @@ export default function Education() {
                     </ul>
                 </div>
 
-                <div className="latestAcadmey mt-5 bg-gray-100 p-3">
+                <div className="latestAcadmey mt-5 bg-gray-100 p-3 rounded-lg">
                     <h1 className="SchoolName font-normal">
                         Kendriya Vidyalaya No. 1 JRC Bareilly
                     </h1>

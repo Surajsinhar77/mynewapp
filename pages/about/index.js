@@ -39,36 +39,36 @@ export default function About() {
                     </p>
                 </div>
 
-                <div className="AboutInfo sm:flex mt-7 border ">
+                <div className="AboutInfo sm:flex mt-7 border rounded-xl">
                     <div className="menubar w-50">
                         <div onClick={()=>setSwitchingData(1)} 
-                            className="hover:text-gray-300 cursor-pointer educationOption flex border h-6 items-center p-7 ">
+                            className="hover:text-gray-300 cursor-pointer educationOption flex h-6 items-center p-7">
                             <FaGraduationCap className='text-lg mr-4'/>
-                            <span  className='w-fit'>Education</span>
+                            <span  className='w-fit hover:border-b-2 hover:border-orange-500'>Education</span>
                         </div>
                         <div onClick={()=>setSwitchingData(2)} 
-                            className="hover:text-gray-300 cursor-pointer educationOption flex border h-6 items-center p-7 ">
+                            className="hover:text-gray-300 cursor-pointer educationOption flex h-6 items-center p-7 ">
                             <FaSuitcase className='text-l mr-4'/>
-                            <span  className='w-fit'>Expreience</span>
+                            <span  className='w-fit hover:border-b-2 hover:border-orange-500'>Expreience</span>
                         </div>
                         <div onClick={()=>setSwitchingData(3)} 
-                            className="hover:text-gray-300 cursor-pointer educationOption flex border h-6 items-center p-7 ">
+                            className="hover:text-gray-300 cursor-pointer educationOption flex h-6 items-center p-7 ">
                             <FaGears className='text-l mr-4'/>
-                            <span className='w-fit'>Skills</span>
+                            <span className='w-fit hover:border-b-2 hover:border-orange-500'>Skills</span>
                         </div>
                         <div  onClick={()=>setSwitchingData(4)} 
-                            className="hover:text-gray-300 cursor-pointer educationOption flex border h-6 items-center p-7 ">
+                            className="hover:text-gray-300 cursor-pointer educationOption flex h-6 items-center p-7 ">
                             <GiAchievement className='text-l mr-4'/>
-                            <span className='w-fit'>Achievements</span>
+                            <span className='w-fit hover:border-b-2 hover:border-orange-500'>Achievements</span>
                         </div>
                         <div onClick={()=>setSwitchingData(5)} 
-                            className="hover:text-gray-300 cursor-pointer educationOption flex border h-6 items-center p-7 ">
+                            className="hover:text-gray-300 cursor-pointer educationOption flex h-6 items-center p-7 ">
                             <FaRegNewspaper className='text-l mr-4'/>
-                            <span className='w-fit'>Resume</span>
+                            <span className='w-fit hover:border-b-2 hover:border-orange-500'>Resume</span>
                         </div>
                     </div>
 
-                    <div className="OptionContainer w-full border p-4">
+                    <div className="OptionContainer w-full p-4">
                         {/* <h1>Eduction</h1> */}
                         <div className="content">
                             {SubRouter  && <SubRouter/>}
