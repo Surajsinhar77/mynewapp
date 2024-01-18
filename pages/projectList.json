@@ -11,7 +11,17 @@
             "/Images/ecom/homepage1.png",
             "/Images/ecom/homepage2.png",
             "/Images/ecom/homepage3.png"
-        ]
+        ],
+        "ImpLink" :{
+            "liveLink" : {
+                "Link" : true,
+                "liveLink" :"https://ecomm-site-one.vercel.app/"
+            },
+            "gitHubLink":{
+                "Link": true,
+                "githubLink":"https://github.com/Surajsinhar77/ecomm-site-one"
+            }
+        }
     },
 
     {
@@ -29,7 +39,17 @@
             "/Images/hms/homepage4.png",
             "/Images/hms/homepage5.png",
             "/Images/hms/homepage6.png"
-        ]
+        ],
+        "ImpLink" :{
+            "liveLink" : {
+                "Link" : false,
+                "liveLink" :""
+            },
+            "gitHubLink":{
+                "Link": true,
+                "githubLink":"https://github.com/Surajsinhar77/minicollage-PRoject"
+            }
+        }
     },
 
     {
@@ -39,6 +59,16 @@
         "imgFolderName":"sof",
         "images": [
             "/Images/hms/homepage0.png"
-        ]
+        ],
+        "ImpLink" :{
+            "liveLink" : {
+                "Link" : false,
+                "liveLink" :""
+            },
+            "gitHubLink":{
+                "Link": true,
+                "githubLink":"https://github.com/Surajsinhar77/StackOverFlowFrontend"
+            }
+        }
     }
 ]

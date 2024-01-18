@@ -1,11 +1,33 @@
 import Navbar from "../components/navbar"
 import Footer from "../components/Footer"
+import { useState } from "react";
 
 export default function Contact() {
+    const [userFormData, setUserFormData] = useState([]);
+
+    function handelFormData(e) {
+        e.preventDefault();
+        setUserFormData({
+            ...userFormData,
+            [e.target.name]: e.target.value,
+        })
+    }
+
+    function handelFormSubmit(e) {
+        e.preventDefault();
+        console.log("Does we came here to something");
+        api.post('/user/contactus', { userFormData })
+            .then((response) => {
+                console.log(response);
+                alert(response.data.message);
+            }).catch((err) => {
+                console.log(err);
+            })
+    }
     return (
         <>
             <div className="contactContainer w-9/12 m-auto">
-                <Navbar/>
+                <Navbar />
                 <div className="subContainer w-9/12 m-auto max-sm:w-full">
                     <div className="contactHeader">
                         <h2 className="text-4xl">Contact Me</h2>
@@ -41,7 +63,7 @@ export default function Contact() {
                         </form>
                     </div>
                 </div>
-                <Footer/>
+                <Footer />
             </div>
         </>
     )
