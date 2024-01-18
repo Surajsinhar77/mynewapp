@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export default async function handler(req, res) {
-    const { name, email, subject, message } = req.body.userFormData;
+    const { name, email, subject, message } = req.body;
     try {
         const mailOptions = {
             from: email, // sender address
@@ -56,7 +56,7 @@ export default async function handler(req, res) {
 
         const info = await transporter.sendMail(mailOptions)
         if (info) {
-            console.log("done sending mail");
+            console.log(" Done sending mail");
             const thank = await transporter.sendMail(
                 {
                     from: myEmail, // sender address

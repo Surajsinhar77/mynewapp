@@ -17,8 +17,7 @@ export default function Contact() {
         e.preventDefault();
         console.log("Does we came here to something");
         try {
-            // Example of a POST request with JSON data
-            const response = await fetch('http://localhost:300/api/contact', {
+            const response = await fetch('http://localhost:3000/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,9 +26,10 @@ export default function Contact() {
             });
 
             const result = await response.json();
-            console.log(result);
+            alert(result.message);
         } catch (error) {
             console.error('Error fetching data:', error);
+            alert(error.message);
         }
     };
 return (
