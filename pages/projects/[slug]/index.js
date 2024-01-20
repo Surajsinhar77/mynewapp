@@ -107,6 +107,7 @@ export default function Project() {
                 <h1 className="text-lg pr-3">Search and Filters </h1>  {ProjectList[params?.slug]?.theDiscription?.Search_and_Filters
                 }
               </span>
+              <br/>
               <span className="text-sm flex">
                 <h1 className="text-lg pr-3">Shopping Cart </h1>  {ProjectList[params?.slug]?.theDiscription?.Shopping_Cart
                 }
