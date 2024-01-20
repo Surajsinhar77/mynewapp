@@ -28,7 +28,7 @@ export default function About() {
     const ProjectList = projectList;
     return (
         <>
-        <div className="sm:w-9/12 m-auto ">
+        <div className="sm:w-9/12 w-full m-auto ">
             <Navbar/>
             <div className="mainAboutContainer ">
                 <div className="aboutMeInfo">

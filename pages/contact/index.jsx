@@ -2,8 +2,12 @@ import Navbar from "../components/navbar"
 import Footer from "../components/Footer"
 import { useState } from "react";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Contact() {
-    const [userFormData, setUserFormData] = useState([]);
+    const [userFormData, setUserFormData] = useState({});
+    const [buttonLoader, setButtonLoader] = useState(false);
 
     function handelFormData(e) {
         e.preventDefault();
@@ -11,11 +15,11 @@ export default function Contact() {
             ...userFormData,
             [e.target.name]: e.target.value,
         })
-    }
+    }   
 
     async function handelFormSubmit(e) {
         e.preventDefault();
-        console.log("Does we came here to something");
+        setButtonLoader(true);
         try {
             const response = await fetch('https://mynewapp-peach.vercel.app/api/contact', {
                 method: 'POST',
@@ -26,12 +30,30 @@ export default function Contact() {
             });
 
             const result = await response.json();
-            alert(result.message);
+            setUserFormData({
+                name :"",
+                email : "",
+                subject:"",
+                message:"",
+            })
+
+            const notify = () => toast(result.message , 
+                {autoClose: 5000,
+                    style: {
+                        backgroundColor: result ? 'green' : 'red',
+                        color: 'white',
+                    },
+                },
+            );
+            notify();
+            setButtonLoader(false);
         } catch (error) {
             console.error('Error fetching data:', error);
             alert(error.message);
+            setButtonLoader(false);
         }
     };
+
 return (
     <>
         <div className="contactContainer w-9/12 m-auto">
@@ -50,6 +72,7 @@ return (
                                     className="focus:outline-none focus:outline-slate-500 focus:border-none rounded-md h-10 border pl-2" 
                                     type="text" 
                                     name="name"
+                                    value={userFormData?.name}
                                     onChange={handelFormData}
                                 />
                             </div>
@@ -59,6 +82,7 @@ return (
                                     className="focus:outline-none focus:outline-slate-500 focus:border-none rounded-md h-10 border pl-2" 
                                     type="email"
                                     name="email"
+                                    value={userFormData?.email}
                                     onChange={handelFormData}
                                 />
                             </div>
@@ -70,6 +94,7 @@ return (
                                     className="focus:outline-none focus:outline-slate-500 focus:border-none rounded-md h-10 border pl-2" 
                                     type="text"
                                     name="subject"
+                                    value={userFormData?.subject}
                                     onChange={handelFormData}
                                 />
                             </div>
@@ -80,6 +105,8 @@ return (
                                 <textarea 
                                     className="focus:outline-none focus:outline-slate-500 focus:border-none rounded-md border pl-2" 
                                     rows='100%'
+                                    name="message"
+                                    value={userFormData?.message}
                                     onChange={handelFormData}
                                 ></textarea>
                             </div>
@@ -88,13 +115,19 @@ return (
                             <button 
                                 className="px-5 py-2 rounded-3xl text-white bg-blue-500 hover:bg-blue-300 hover:text-gray-600"
                                 onClick={handelFormSubmit}
-                            >Submit</button>
+                            >
+                                {(buttonLoader)? "loading..."
+                                :
+                                    " Submit"
+                                }   
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
             <Footer />
         </div>
+        <ToastContainer/>
     </>
 )
 }

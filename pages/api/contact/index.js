@@ -37,7 +37,7 @@ export default async function handler(req, res) {
                     <img src="https://your-logo-url" alt="Your Logo" style="width: 150px;">
                     </header>
                 
-                    <h3 style="font-size: 24px; margin: 20px 0;">Hello ${name},</h3>
+                    <h3 style="font-size: 24px; margin: 20px 0;">Hello Suraj,</h3>
                 
                     <p style="margin: 20px 0;">
                         ${message}
@@ -56,20 +56,18 @@ export default async function handler(req, res) {
 
         const info = await transporter.sendMail(mailOptions)
         if (info) {
-            console.log(" Done sending mail");
             const thank = await transporter.sendMail(
                 {
                     from: myEmail, // sender address
                     to: email, // receiver email
-                    subject: "Thank You", // Subject line
+                    subject: "Mail is Sucessfull Sent", // Subject line
                     text: `Hi there, you were emailed from ${myEmail} `,
-                    html: `<h1> Thank yor From Subscribe ${email} </h1>`,
+                    html: `<h1> Thank you for reach us from </h1>`,
                 }
             )
         }
         return res.status(200).json({ message: " Mail sucessfull sent" })
     } catch (err) {
-        console.log(err);
         return res.status(404).json({ message: err.message });
     }
 }
