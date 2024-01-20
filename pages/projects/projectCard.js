@@ -1,6 +1,5 @@
 import { FaEllipsisVertical } from "react-icons/fa6";
 import {SiV} from 'react-icons/si';
-import Image from "next/image"
 import Link from "next/link";
 
 export default function ProjectCard({project,index}) {

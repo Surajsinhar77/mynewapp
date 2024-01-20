@@ -14,6 +14,8 @@ export default function Project() {
   const ProjectList = projectList;
   const homePagePageImageFolder = `/Images/${ProjectList[params?.slug]?.imgFolderName
     }/homepage0.png`;
+
+
   const [mainPageImage, setMainImage] = useState(homePagePageImageFolder);
 
   function functionToChange(e) {
@@ -86,28 +88,34 @@ export default function Project() {
           <span className="uppercase text-2xl font-medium mb-4">
             Description
           </span>
-          <h1>
-          The Online Fresh Produce Marketplace is an e-commerce platform designed to connect local farmers and producers with consumers seeking fresh and high-quality fruits and vegetables. This platform aims to revolutionize the way people purchase and access fresh produce, providing a convenient and efficient solution for both producers and consumers.
-                <br></br><br></br>
-                Key Features:
-                <br></br><br></br>
-                1. User Registration and Authentication:
-                Users can create accounts and log in securely.
-                Multi-factor authentication for enhanced security.
-                <br></br><br></br>
-                2.Product Listings:
-                Farmers and producers can create listings for their fruits and vegetables.
-                Each listing includes details such as product type, quantity, price, and quality.
-                <br></br><br></br>
-                3. Search and Filters:
-                Users can search for specific fruits or vegetables.
-                Filters for sorting by category, price range, and location.
-                <br></br><br></br>
-                4.Shopping Cart:
-                Users can add products to their cart for easy checkout.
-                Cart displays a summary of selected items, quantities, and total cost.The Online Fresh Produce Marketplace is an e-commerce platform designed to connect local farmers and producers with consumers seeking fresh and high-quality fruits and vegetables. This platform aims to revolutionize the way people purchase and access fresh produce, providing a convenient and efficient solution for both producers and consumers. Key Features: 1. User Registration and Authentication: Users can create accounts and log in securely. Multi-factor authentication for enhanced security. 2.Product Listings: Farmers and producers can create listings for their fruits and vegetables. Each listing includes details such as product type, quantity, price, and quality. 3. Search and Filters: Users can search for specific fruits or vegetables. Filters for sorting by category, price range, and location. 4.Shopping Cart: Users can add products to their cart for easy checkout. Cart displays a summary of selected items, quantities, and total cost.
-                <br></br>
-                Skills: MongoDB · Node.js · Express.js · Tailwind CSS · React.js
+          <h1>  
+              <span className="text-sm flex">
+                <h1 className="text-lg pr-3">Overview  </h1>  {ProjectList[params?.slug]?.theDiscription?.Overview}
+              </span>
+              <br/>
+              <span className="text-sm flex">
+                <h1 className="text-lg pr-3">Key Features  </h1>  {ProjectList[params?.slug]?.theDiscription?.Key_Features
+                }
+              </span>
+              <br/>
+              <span className="text-sm flex">
+                <h1 className="text-lg pr-3">Product Listings </h1>  {ProjectList[params?.slug]?.theDiscription?.Product_Listings
+                }
+              </span>
+              <br/>
+              <span className="text-sm flex">
+                <h1 className="text-lg pr-3">Search and Filters </h1>  {ProjectList[params?.slug]?.theDiscription?.Search_and_Filters
+                }
+              </span>
+              <span className="text-sm flex">
+                <h1 className="text-lg pr-3">Shopping Cart </h1>  {ProjectList[params?.slug]?.theDiscription?.Shopping_Cart
+                }
+              </span>
+              <br/>
+              <span className="text-sm flex">
+                <h1 className="text-lg pr-3">Tech Stack </h1>  {ProjectList[params?.slug]?.theDiscription?.Skills
+                }
+              </span>
           </h1>
         </div>
 
@@ -127,21 +135,3 @@ export default function Project() {
     </>
   );
 }
-
-
-{/* <div className="otherImageOption border flex w-[100%] h-fullmt-7 overflow-x-auto">
-              {ProjectList[params?.slug]?.images.map((item, index) => (
-                <div
-                  key={index}
-                  onClick={(e) => functionToChange(e)}
-                  name={index}
-                  className="imagesOfProject w-28 h-full border m-4 hover:shadow-lg cursor-pointer"
-                >
-                  <img
-                    src={item}
-                    alt="Project Image"
-                    className="w-full object-cover"
-                  />
-                </div>
-              ))} 
-            {/* </div> */}
