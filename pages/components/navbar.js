@@ -38,7 +38,7 @@ export default function Navbar() {
                 <div className="navContainer bg-white flex p-2 m-2 w-4/5 items-center max-sm:flex-col rounded justify-between">
                     <div className="logoContainer">
                         <h1 className="text-red-500 text-center font-bold uppercase"> <Link 
-                        to='/'>Suraj Kumar</Link> </h1>
+                        href='/'>Suraj Kumar</Link> </h1>
                     </div>
                     <div className='flex max-lg:flex-col w-full max-lg:h-auto max-md:h-auto max-md:py-2 max-lg:justify-evenly max-lg:px-5 max-lg:rounded max-lg:gap-3'>
 
