@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import Navbar from "../../components/navbar";
 import Image from "next/image";
@@ -22,6 +22,9 @@ export default function Project() {
     e.preventDefault();
     setMainImage(e.target.attributes[0].nodeValue);
   }
+
+  const liveLink = ProjectList?.[params?.slug]?.ImpLink?.liveLink.liveLink;
+  const githubLink = ProjectList?.[params?.slug]?.ImpLink?.gitHubLink?.gitHubLink;
 
   return (
     <>
@@ -63,9 +66,9 @@ export default function Project() {
 
           </div>
           <div className="detailInfo p-5 w-1/5 max-lg:w-full">
-            <div> 
-              <button className="py-2 px-4 rounded-lg font-bold border-2 bg-red-600 text-white">LIVE</button>
-              <button className="py-2 px-4 rounded-lg font-bold border-2 bg-red-600 text-white">GitHub</button> 
+            <div className="my-5"> 
+              <Link href={(liveLink)? liveLink : "#"} className="py-2 px-4 rounded-lg font-bold border-2 bg-red-600 text-white">LIVE</Link>
+              <Link href={(githubLink)? githubLink:"#"} className="py-2 px-4 rounded-lg font-bold border-2 bg-red-600 text-white">GitHub</Link> 
             </div>
             <h1 className="mb-5">NAME : {ProjectList[params?.slug]?.name} </h1>
             <div className="tags max-lg:flex max-sm:flex-col">
@@ -136,3 +139,7 @@ export default function Project() {
     </>
   );
 }
+
+// ProjectList?.[params?.slug]?.ImpLink?.liveLink?.Link? ProjectList?.[params?.slug]?.ImpLink?.liveLink?.LiveLink : '/' 
+
+// ProjectList?.[params?.slug]?.ImpLink?.gitHubLink?.Link? ProjectList?.[params?.slug]?.ImpLink?.gitHubLink?.githubLink : '/'
