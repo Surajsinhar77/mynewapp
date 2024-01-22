@@ -2,24 +2,20 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import Navbar from "../../components/navbar";
-import Image from "next/image";
 import Footer from "../../components/Footer";
-import { useState } from "react";
-// import VideoPlayer from '../../components/VideoPlayer';
+import { useEffect, useState } from "react";
 import projectList from "./../../projectList.json";
-import { Button } from "@mui/base";
 
 export default function Project() {
   const params = useParams();
   const ProjectList = projectList;
-  const homePagePageImageFolder = `/Images/${ProjectList[params?.slug]?.imgFolderName
-    }/homepage0.png`;
-
+  const homePagePageImageFolder = `${ProjectList[params?.slug]?.images[0]}`;
 
   const [mainPageImage, setMainImage] = useState(homePagePageImageFolder);
 
   function functionToChange(e) {
     e.preventDefault();
+    console.log("this is from the project slug index: ", e.target.attributes[0].nodeValue);
     setMainImage(e.target.attributes[0].nodeValue);
   }
 
