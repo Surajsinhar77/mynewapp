@@ -28,7 +28,7 @@ export default function Project() {
 
   return (
     <>
-      <div className="w-[75vw] m-auto">
+      <div className="sm:w-9/12 w-full m-auto px-5">
         <Navbar />
         
         <h1 className="text-3xl my-8 text-center uppercase">
@@ -66,7 +66,7 @@ export default function Project() {
 
           </div>
           <div className="detailInfo p-5 w-1/5 max-lg:w-full">
-            <div className="my-5"> 
+            <div className="sm:my-5 flex lg:flex-col"> 
               <Link href={(liveLink)? liveLink : "#"} className="py-2 px-4 rounded-lg font-bold border-2 bg-red-600 text-white">LIVE</Link>
               <Link href={(githubLink)? githubLink:"#"} className="py-2 px-4 rounded-lg font-bold border-2 bg-red-600 text-white">GitHub</Link> 
             </div>

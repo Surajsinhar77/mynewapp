@@ -41,20 +41,11 @@ export default function Index() {
         },
     ];
 
-    const AboutContent = {
-        about : [`I am a software developer with a passion for web development and data structures and algorithms. I have skills in MERN stack (MongoDB, Express, React, and Node.js) and I am learning Next.js to create dynamic and interactive web applications. I have also completed several online courses and projects on various topics such as HTML, CSS, JavaScript, Bootstrap, RESTful APIs, authentication, and deployment.
-        
-        I am currently looking for freelance opportunities in web development where I can apply my skills and knowledge to create innovative and user-friendly websites for clients. I have experience in working with different tools and platforms such as GitHub, Heroku, Netlify, Firebase, and AWS. I can also work with different databases such as MySQL, PostgreSQL, MongoDB, and Firebase.
-        
-        I am always eager to learn new technologies and systems that can enhance my development capabilities and broaden my horizons. I am interested in topics such as cloud computing, machine learning, artificial intelligence, blockchain, and cybersecurity. I also enjoy solving coding challenges and participating in hackathons.
-        
-        If you are interested in my work or want to collaborate with me, please feel free to contact me via email or LinkedIn. I look forward to hearing from you.`]
-    }
 
     return (
         <>
             <div>
-                <div className="myAbout p-7 bg-blue-100 rounded">
+                <div className="myAbout p-5 bg-blue-100 rounded">
                     <h3 className="text-3xl mb-5">Hi &rsquo; Im Suraj.</h3>
                     <p className="font-light text-xl tracking-wide leading-relaxed">
                         <span>
@@ -91,22 +82,10 @@ export default function Index() {
                 </div>
 
                 <div className="ContainerForHomePage mt-5 w-full flex justify-between">
-                    {/* <div className="latestBlog w-6/12 pr-3">
-                        <h3 className="text-2xl">Latest Blog</h3>
-
-                        <div className="mx-2 mt-4 h-0.5 rounded-full bg-gray-300"></div>
-                        <div className="mx-2">
-                            {
-                                BlogsContent.map((element,index)=>{
-                                    return <Blogs key={element.id} element={element} index={index}/>
-                                })
-                            }
-                        </div>
-                    </div> */}
-                    <div className="latestProject w-full pl-3">
+                    <div className="latestProject w-full">
                         <h3 className="text-2xl">Latest Project</h3>
                         <div className="mx-2 mt-4 h-0.5 rounded-full bg-gray-300"></div>
-                        <div className="mx-2 p-5 grid grid-cols-1 md:grid-cols-2 gap-6 m-auto xl:grid-cols-3">
+                        <div className="mx-2 py-5 grid grid-cols-1 md:grid-cols-2 gap-6 m-auto xl:grid-cols-3">
                         {
                             ProjectList.map((project,index)=>{
                                     return <ProjectCard key={index} project={project} index={index}/>

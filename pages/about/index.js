@@ -28,9 +28,9 @@ export default function About() {
     const ProjectList = projectList;
     return (
         <>
-        <div className="sm:w-9/12 w-full m-auto ">
+        <div className="sm:w-9/12 w-full m-auto px-5">
             <Navbar/>
-            <div className="mainAboutContainer ">
+            <div className="mainAboutContainer">
                 <div className="aboutMeInfo">
                     <h1 className='mb-3 text-4xl text-center uppercase'>About me </h1>
                     <h5 className='text-xl mt-5 font-normal text-center'>Welcome to my portfolio!</h5>

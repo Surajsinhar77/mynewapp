@@ -56,7 +56,7 @@ export default function Contact() {
 
 return (
     <>
-        <div className="contactContainer w-9/12 m-auto">
+        <div className="contactContainer sm:w-9/12 w-full m-auto px-5">
             <Navbar />
             <div className="subContainer w-9/12 m-auto max-sm:w-full">
                 <div className="contactHeader">

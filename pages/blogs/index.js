@@ -9,7 +9,7 @@ export default function Blog(){
 
     return (
         <>
-        <div className="w-9/12 m-auto">
+        <div className="sm:w-9/12 w-full m-auto px-5">
             <Navbar />
             <p className="text-red-500 underline font-bold uppercase text-3xl"> Under the development </p>
             <div className="BlogContainer flex justify-between">
