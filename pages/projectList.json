@@ -151,18 +151,18 @@
     {
         "name": "Rush Chat",
         "date": [26, "jan", 2024],
-        "tags": ["react.js", "node.js", "express.js", "mongodb", "react-router-dom, socket.io, chakraUI"],
+        "tags": ["react.js", "node.js", "express.js", "mongodb", "react-router-dom", "socket.io", "chakraUI"],
         "link": "https://www.youtube.com/embed/x7QvY4OEgYI",
         "img": "/Images/rushchat/rchat1.png",
         "imgFolderName" : "rushchat",
         "images": [
-            "/Images/affstore/afPage0.png",
-            "/Images/affstore/afPage1.png",
-            "/Images/affstore/afPage2.png",
-            "/Images/affstore/afPage3.png",
-            "/Images/affstore/afPage4.png",
-            "/Images/affstore/afPage5.png",
-            "/Images/affstore/afPage6.png"
+            "/Images/rushchat/rchat1.png",
+            "/Images/rushchat/rchat1.png",
+            "/Images/rushchat/rchat1.png",
+            "/Images/rushchat/rchat1.png",
+            "/Images/rushchat/rchat1.png",
+            "/Images/rushchat/rchat1.png",
+            "/Images/rushchat/rchat1.png"
         ],
 
         "ImpLink" :{
