@@ -12,7 +12,6 @@ export default function Project() {
   const homePagePageImageFolder = `${ProjectList[params?.slug]?.images[0]}`;
 
   const [mainPageImage, setMainImage] = useState(homePagePageImageFolder);
-
   function functionToChange(e) {
     e.preventDefault();
     console.log("this is from the project slug index: ", e.target.attributes[0].nodeValue);
@@ -63,7 +62,7 @@ export default function Project() {
           </div>
           <div className="detailInfo p-5 w-1/5 max-lg:w-full">
             <div className="sm:my-5 flex lg:flex-col"> 
-              <Link href={(liveLink)? liveLink : "#"} className="py-2 px-4 rounded-lg font-bold border-2 bg-red-600 text-white">LIVE</Link>
+              <Link href={(liveLink)? liveLink : "#"} target={"blank"} className="py-2 px-4 rounded-lg font-bold border-2 bg-red-600 text-white">LIVE</Link>
               <Link href={(githubLink)? githubLink:"#"} className="py-2 px-4 rounded-lg font-bold border-2 bg-red-600 text-white">GitHub</Link> 
             </div>
             <h1 className="mb-5">NAME : {ProjectList[params?.slug]?.name} </h1>
