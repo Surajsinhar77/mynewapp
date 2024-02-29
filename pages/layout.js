@@ -1,7 +1,6 @@
 
 // import './globals.css'
 import { Rubik } from 'next/font/google'
-import { SpeedInsights } from "@vercel/speed-insights/next"
 const rubik = Rubik({ subsets: ['latin'] })
 
 
