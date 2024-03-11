@@ -4,17 +4,13 @@ import { useState } from "react";
 import { BiLogoMediumOld, BiUser } from "react-icons/bi";
 
 export default function Navbar() {
-
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
     };
 
-
     const [dw, setDW] = useState(false);
-
-
 
     const menu = ['Setting', 'Blog', 'About']
     const menu2 = ['profile', 'Service', 'Blog', 'About']
@@ -22,7 +18,6 @@ export default function Navbar() {
     const [sugg, setSugg] = useState([]);
     const [searchValue, setValue] = useState("");
     const [vis, setVis] = useState(false);
-
 
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -37,8 +32,12 @@ export default function Navbar() {
             <div className='flex flex-col justify-center items-center border my-4 rounded-lg'>
                 <div className="navContainer bg-white flex p-2 m-2 w-4/5 items-center max-sm:flex-col rounded justify-between">
                     <div className="logoContainer">
-                        <h1 className="text-red-500 text-center font-bold uppercase"> <Link 
-                        href='/'>Suraj Kumar</Link> </h1>
+                        <Link href='/' className="flex items-center">
+                            <Image src="/images/profile.png" alt="logo" width={50} height={50} className="rounded-full" />
+                            <h1 className="text-black text-center font-bold text-sm uppercase">       
+                                Suraj Kumar 
+                            </h1>
+                        </Link> 
                     </div>
                     <div className='flex max-lg:flex-col w-full max-lg:h-auto max-md:h-auto max-md:py-2 max-lg:justify-evenly max-lg:px-5 max-lg:rounded max-lg:gap-3'>
 

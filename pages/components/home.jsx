@@ -47,7 +47,7 @@ export default function Index() {
             <div>
                 <div className="myAbout p-5 bg-blue-100 rounded">
                     <h3 className="text-3xl mb-5">Hi &rsquo; Im Suraj.</h3>
-                    <p className="font-light text-xl tracking-wide leading-relaxed">
+                    <p className="font-light text-xl tracking-wide leading-relaxed text-justify">
                         <span>
                         I am a software developer with a passion for web development and data structures and algorithms. I have skills in MERN stack (MongoDB, Express, React, and Node.js) and I am learning Next.js to create dynamic and interactive web applications. I have also completed several online courses and projects on various topics such as HTML, CSS, JavaScript, Bootstrap, RESTful APIs, authentication, and deployment.
                         </span>
