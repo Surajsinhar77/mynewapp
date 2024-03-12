@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import Navbar from "../../components/navbar";
-import Footer from "../../components/Footer";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
-import projectList from "./../../projectList.json";
+import projectList from "@/pages/projectList.json";
 
 export default function Project() {
   const params = useParams();

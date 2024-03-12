@@ -1,6 +1,35 @@
+"use client"
+
 import Image from "next/image";
+import axios from 'axios';
+import {useEffect, useState} from "react";
+
+async function databaseConnectivity(email, password){
+    console.log("This is on the admin login page",email, password);
+    try{
+        const response = await axios.post('http://localhost:3000/api/auth/signin', 
+            {
+                email: email, 
+                password: password
+            }
+        );
+        console.log(response);
+    }catch(err){
+        console.log("from ther frontend signup ", err);
+    }
+}
 
 export default function AdminalPage(){
+    const [email , setEmail] = useState("");
+    const [password, setPassword]= useState("");
+
+    function loginFunc(e){
+        e.preventDefault()
+        console.log("click function is working ")
+        databaseConnectivity(email, password);
+        setEmail("");
+        setPassword("");
+    }
 
     return(
         <div className="flex h-full">
@@ -22,11 +51,11 @@ export default function AdminalPage(){
                         <form className="h-64 flex flex-col justify-between">
                             <div className="row flex flex-col">
                                 <label className="text-xs" htmlFor="">Email</label>
-                                <input className="h-10 rounded pl-3 mt-1" onChange={(e)=>setEmail(e.target.value)} placeholder="admin@myportfolio.com" type="email" required/>
+                                <input className="h-10 rounded pl-3 mt-1" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="admin@myportfolio.com" type="email" required/>
                             </div>
                             <div className="row flex flex-col">
                                 <label className="text-xs" htmlFor="">Password</label>
-                                <input className="h-10 rounded pl-3 mt-1" onChange={(e)=>setPassword(e.target.value)} type="password" required/>
+                                <input className="h-10 rounded pl-3 mt-1" value={password} onChange={(e)=>setPassword(e.target.value)} type="password" required/>
                             </div>
                             <div className="row pl-3">
                                 <div className="one">
@@ -38,7 +67,7 @@ export default function AdminalPage(){
                                 </div>
                             </div>
                             <div className="row">
-                                <button className="bg-black text-white py-2 px-4 border border-white rounded-lg">Login</button>
+                                <button onClick={(e)=>loginFunc(e)} className="bg-black text-white py-2 px-4 border border-white rounded-lg">Login</button>
                             </div>
                         </form>
                     </div>

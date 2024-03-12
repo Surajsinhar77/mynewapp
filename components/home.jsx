@@ -1,8 +1,8 @@
 import { FaLinkedin, FaGithub, FaDiscord , FaCode} from "react-icons/fa";
 import Link from 'next/link';
-import ProjectCard from "../projects/projectCard";
+import ProjectCard from "@/pages/projects/projectCard";
 import Blogs from "./Blogs";
-import projectList from './../projectList.json';
+import projectList from '@/pages/projectList.json';
 export default function Index() {
 
     const ProjectList = projectList;

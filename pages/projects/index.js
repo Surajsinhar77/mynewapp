@@ -1,8 +1,8 @@
-import Navbar from '../components/navbar';
+import Navbar from '@/components/navbar';
 // import Image from 'next/image';
 import ProjectCard from './projectCard'
-import Footer from '../components/Footer';
-import projectList from "./../projectList.json";
+import Footer from '@/components/Footer';
+import projectList from "@/pages/projectList.json";
 
 export default function Page() {
     

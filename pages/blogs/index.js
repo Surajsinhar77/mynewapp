@@ -1,6 +1,6 @@
-import Navbar from "../components/navbar";
-import Blogs from "../components/Blogs";
-import Footer from "../components/Footer";
+import Navbar from "@/components/navbar";
+import Blogs from "@/components/Blogs";
+import Footer from "@/components/Footer";
 import blogData from "./blogData.json";
 // Blogs page
 

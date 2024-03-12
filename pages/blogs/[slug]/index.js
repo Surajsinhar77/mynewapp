@@ -1,10 +1,10 @@
 'use client'
 
 import { useParams } from "next/navigation";
-import Navbar from "../../components/navbar";
-import Footer from "../../components/Footer";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/Footer";
 import Image from "next/image";
-import Blogs from "../../components/Blogs";
+import Blogs from "@/components/Blogs";
 import blogData  from "../blogData.json";
 
 export default function Page({data, index}){

@@ -1,6 +1,6 @@
 'use client'
-import Navbar from '../components/navbar';
-import Footer from '../components/Footer';
+import Navbar from '@/components/navbar';
+import Footer from '@/components/Footer';
 import {FaBookOpen,FaGraduationCap,FaRegNewspaper} from "react-icons/fa6";
 import {FaSuitcase,FaGears} from 'react-icons/fa6';
 import {GiAchievement} from 'react-icons/gi';
@@ -17,11 +17,11 @@ import projectList from "./../projectList.json";
 export default function About() {
     const [switching, setSwitchingData] =useState(1);
     const subRouterComponents ={
-        1:dynamic(()=>import('../components/Education')),
-        2:dynamic(()=>import('../components/Exprience')),
-        3:dynamic(()=>import('../components/Skill')),
-        4:dynamic(()=>import('../components/Achievements')),
-        5:dynamic(()=>import('../components/ResumeViewer')),
+        1:dynamic(()=>import('@/components/Education')),
+        2:dynamic(()=>import('@/components/Exprience')),
+        3:dynamic(()=>import('@/components/Skill')),
+        4:dynamic(()=>import('@/components/Achievements')),
+        5:dynamic(()=>import('@/components/ResumeViewer')),
     }
     const SubRouter = subRouterComponents[switching] || null;
 
