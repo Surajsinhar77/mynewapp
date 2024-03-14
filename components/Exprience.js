@@ -5,7 +5,7 @@ export default function Exprience() {
             <div className="headerForEd font-bold">
                 Experience
             </div>
-            <div className="bg-gray-100 p-4 mt-3 rounded-lg">
+            <div className="border p-4 mt-3 rounded-lg">
                 <div className="latestAcadmey mt-2">
                     <h1 className="SchoolName font-normal">
                         Sure Trust
@@ -18,7 +18,7 @@ export default function Exprience() {
                 </div>
             </div>
 
-            <div className="bg-gray-100 p-4 mt-5 rounded-lg">
+            <div className="border p-4 mt-5 rounded-lg">
                 <div className="latestAcadmey mt-2">
                     <h1 className="SchoolName font-normal">
                         Sure Trust
@@ -31,7 +31,7 @@ export default function Exprience() {
                 </div>
             </div>
 
-            <div className="bg-gray-100 p-4 mt-5 rounded-lg">
+            <div className="border p-4 mt-5 rounded-lg">
                 <div className="latestAcadmey mt-2">
                     <h1 className="SchoolName font-normal">
                         Dabotics India Pvt. Ltd.

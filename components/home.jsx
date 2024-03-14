@@ -45,9 +45,9 @@ export default function Index() {
     return (
         <>
             <div>
-                <div className="myAbout p-5 bg-blue-100 rounded">
-                    <h3 className="text-3xl mb-5">Hi &rsquo; Im Suraj.</h3>
-                    <p className="font-light text-xl tracking-wide leading-relaxed text-justify">
+                <div className="myAbout p-5 bg-dark text-white rounded">
+                    <h3 className="text-2xl mb-5">Hi &rsquo; Im Suraj.</h3>
+                    <p className="font-light text-lg tracking-wide leading-relaxed text-justify">
                         <span>
                         I am a software developer with a passion for web development and data structures and algorithms. I have skills in MERN stack (MongoDB, Express, React, and Node.js) and I am learning Next.js to create dynamic and interactive web applications. I have also completed several online courses and projects on various topics such as HTML, CSS, JavaScript, Bootstrap, RESTful APIs, authentication, and deployment.
                         </span>
@@ -64,17 +64,17 @@ export default function Index() {
                         If you are interested in my work or want to collaborate with me, please feel free to contact me via email or LinkedIn. I look forward to hearing from you.
                         </span>
                     </p>
-                    <h2 className="mt-5 text-2xl underline font-light text-green-700">
+                    <h2 className="mt-5 text-xl font-light text-green-700">
                         Connect Me
                     </h2>
                     <div className="SocalLinks grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 m-auto">
-                        <Link  href="https://www.linkedin.com/in/kumar-suraj-sk/" className="my-3 bg-white border border-gray-300 bottom-1 py-2 px-2 rounded-lg m-auto">  <FaLinkedin className="text-blue-700 text-3xl"/>  </Link>
+                        <Link  href="https://www.linkedin.com/in/kumar-suraj-sk/" className="my-3   bottom-1 py-2 px-2 rounded-lg m-auto">  <FaLinkedin className="text-blue-700 text-3xl"/>  </Link>
 
-                        <Link  href="https://github.com/Surajsinhar77" className=" my-3 bg-white border border-gray-300 bottom-1 py-2 px-2 rounded-lg m-auto">  <FaGithub className="text-gray-700 text-3xl"/>  </Link>
+                        <Link  href="https://github.com/Surajsinhar77" className=" my-3   bottom-1 py-2 px-2 rounded-lg m-auto">  <FaGithub className="text-gray-200 text-3xl"/>  </Link>
 
-                        <Link  href="/" className="my-3 bg-white border border-gray-300 bottom-1 py-2 px-2 rounded-lg m-auto">  <FaDiscord className="text-blue-700 text-3xl"/>  </Link>
+                        <Link  href="/" className="my-3   bottom-1 py-2 px-2 rounded-lg m-auto">  <FaDiscord className="text-blue-700 text-3xl"/>  </Link>
 
-                        <Link  href="/" className=" my-3 bg-white border border-gray-300 bottom-1 py-2 px-2 rounded-lg m-auto">  <FaCode className="text-gray-800 text-3xl"/>  </Link>
+                        <Link  href="/" className=" my-3   bottom-1 py-2 px-2 rounded-lg m-auto">  <FaCode className="text-gray-800 text-white text-3xl"/>  </Link>
                     </div>
                     <div className="codingPlateformLink">
 
@@ -83,7 +83,7 @@ export default function Index() {
 
                 <div className="ContainerForHomePage mt-5 w-full flex justify-between">
                     <div className="latestProject w-full">
-                        <h3 className="text-2xl">Latest Project</h3>
+                        <h3 className="text-2xl text-white underline">Latest Project</h3>
                         <div className="mx-2 mt-4 h-0.5 rounded-full bg-gray-300"></div>
                         <div className="mx-2 py-5 grid grid-cols-1 md:grid-cols-2 gap-6 m-auto xl:grid-cols-3">
                         {

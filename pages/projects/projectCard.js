@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function ProjectCard({project,index}) {
   return (
       <>
-        <div className="cardBody w-fit border m-auto bg-white shadow-md rounded-lg overflow-hidden mb-5">
+        <div className="cardBody w-fit border m-auto shadow-md rounded-lg overflow-hidden mb-5">
           <div className="upperBody flex border items-center justify-between p-2">
             <div className="main part w-full">
                 <div className="nameAndDate  w-full flex flex-col items-center">

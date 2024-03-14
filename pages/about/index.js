@@ -104,6 +104,7 @@ export default function About() {
                                 <FaLinkedinIn className='mr-1'/> LinkedIn</Link>
                             <Link href='/contact' className='flex px-2 py-2 border items-center rounded-lg mr-2 text-green-500 border-green-500  hover:bg-green-500 hover:text-white'>
                                 <CgWebsite className='mr-1'/> Contact Page</Link>
+                                
                         </div>
                     </div>
                 </div>

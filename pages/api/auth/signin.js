@@ -11,13 +11,12 @@ export default async function handler(req, res) {
             return res.status(404).json({message: "user not exist", userExist: false});
         }
 
-        const passwordMatch = await bcrypt.compare(userExist.password);
+        const passwordMatch = await bcrypt.compare(req.body.password, userExist.password);
         if(passwordMatch){
-            console.log("This is the response from the signin handler",response);
             return res.status(200).json({message : "User login sucessfull" ,data: userExist });
         }
 
-        return res.status(401).json({message: "passsword is invalid"}, userExist : false);
+        return res.status(401).json({message: "passsword is invalid", userExist : false});
         
     }catch(err){
         console.log("this is the error here ",err);

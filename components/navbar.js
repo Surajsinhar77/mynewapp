@@ -29,12 +29,12 @@ export default function Navbar() {
 
     return (
         <>
-            <div className='flex flex-col justify-center items-center border my-4 rounded-lg'>
-                <div className="navContainer bg-white flex p-2 m-2 w-4/5 items-center max-sm:flex-col rounded justify-between">
+            <div className='text-white flex flex-col justify-center items-center border my-4 rounded-lg'>
+                <div className="navContainer  flex p-2 m-2 w-4/5 items-center max-sm:flex-col rounded justify-between">
                     <div className="logoContainer">
                         <Link href='/' className="flex items-center">
                             <Image src="/Images/profile.png" alt="logo" width={50} height={50} className="rounded-full" />
-                            <h1 className="text-black text-center font-bold text-sm uppercase">       
+                            <h1 className="text-center font-bold text-sm uppercase font-light">       
                                 Suraj Kumar 
                             </h1>
                         </Link> 
@@ -42,7 +42,7 @@ export default function Navbar() {
                     <div className='flex max-lg:flex-col w-full max-lg:h-auto max-md:h-auto max-md:py-2 max-lg:justify-evenly max-lg:px-5 max-lg:rounded max-lg:gap-3'>
 
                         <div className="md:hidden flex justify-end">
-                            <button onClick={toggleMobileMenu} className="text-black focus:outline-none">
+                            <button onClick={toggleMobileMenu} className="focus:outline-none">
                                 <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"

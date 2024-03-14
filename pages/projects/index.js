@@ -15,7 +15,7 @@ export default function Page() {
                 <Navbar/>
                 <div className="projectContaienr">
                     <div className="mainHeading mb-14">
-                        <h1 className="mainHead text-3xl text-black underline my-4">Projects</h1>
+                        <h1 className="mainHead text-3xl underline my-12">Projects</h1>
                         <h4 className="subheading text-xl mt-5">
                             Some of my spare time tinkering
                         </h4>
