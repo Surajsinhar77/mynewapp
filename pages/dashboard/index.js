@@ -23,9 +23,12 @@ export default function Dashboard(){
 //         )  
 //     }  
     return (    
-            <>      
-                Not signed in <br />      
-                {/* <button onClick={() => signIn()}>Sign in</button>     */}
+            <>  
+            	<div className="Container">
+            		<div className="mine_container">
+            			
+            		</div>
+            	</div>    
             </>  
         )
 };

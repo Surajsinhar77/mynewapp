@@ -1,7 +1,9 @@
 import prisma from '@/db/db'; //should be same name from the export  
 import bcrypt from 'bcrypt';
 
+
 export default async function handler(req, res){
+	console.log("This is body : ",req.body)
 	try{
 		const userExist = await prisma.users.findUnique({
 			where:{email: req.body.email}
@@ -14,10 +16,12 @@ export default async function handler(req, res){
 		const hashPassword = await bcrypt.hash(req.body.password, 10);
 
 		const response = await prisma.users.create({
-			name: req.body.name,
-			email : req.body.email,
-			password: hashPassword,
-			role : "admin",
+			data :{
+				name: req.body.name,
+				email : req.body.email,
+				password: hashPassword,
+				role : req.body.role
+			}
 		})
 		console.log("check yours database ");
 		return res.json({message: "account is sucessfull created" ,res : response});

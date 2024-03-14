@@ -3,9 +3,11 @@
 import Image from "next/image";
 import axios from 'axios';
 import {useEffect, useState} from "react";
+import {useRoute} from "@next/router";
 
 async function databaseConnectivity(email, password){
     console.log("This is on the admin login page",email, password);
+    const routes = useRoute();
     try{
         const response = await axios.post('http://localhost:3000/api/auth/signin', 
             {
@@ -13,7 +15,8 @@ async function databaseConnectivity(email, password){
                 password: password
             }
         );
-        console.log(response);
+        console.log("This is from adminlogin page :",response);
+        routes.push('/dashboard');
     }catch(err){
         console.log("from ther frontend signup ", err);
     }
