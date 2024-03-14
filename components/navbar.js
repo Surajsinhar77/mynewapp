@@ -33,7 +33,7 @@ export default function Navbar() {
                 <div className="navContainer bg-white flex p-2 m-2 w-4/5 items-center max-sm:flex-col rounded justify-between">
                     <div className="logoContainer">
                         <Link href='/' className="flex items-center">
-                            <Image src="/images/profile.png" alt="logo" width={50} height={50} className="rounded-full" />
+                            <Image src="/Images/profile.png" alt="logo" width={50} height={50} className="rounded-full" />
                             <h1 className="text-black text-center font-bold text-sm uppercase">       
                                 Suraj Kumar 
                             </h1>

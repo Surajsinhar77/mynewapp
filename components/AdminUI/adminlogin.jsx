@@ -3,7 +3,7 @@
 import Image from "next/image";
 import axios from 'axios';
 import {useEffect, useState} from "react";
-import {useRoute} from "@next/router";
+import { useRouter } from 'next/router'
 
 async function databaseConnectivity(email, password){
     console.log("This is on the admin login page",email, password);

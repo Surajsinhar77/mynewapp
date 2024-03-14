@@ -3,6 +3,7 @@ import Link from 'next/link';
 import ProjectCard from "@/pages/projects/projectCard";
 import Blogs from "./Blogs";
 import projectList from '@/pages/projectList.json';
+
 export default function Index() {
 
     const ProjectList = projectList;
