@@ -1,9 +1,8 @@
 import Navbar from "@/components/navbar"
 import Footer from "@/components/Footer"
 import { useState } from "react";
+import { toast } from 'react-toastify';
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 export default function Contact() {
     const [userFormData, setUserFormData] = useState({});

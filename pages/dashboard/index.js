@@ -1,34 +1,24 @@
-// "use client"
-// import { useContext, useState } from 'react';
-// import { useSession, signIn, signOut } from "next-auth/react"
+import { adminData } from '@/Store/auth';
+import { useRecoilValue } from 'recoil';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
-// import Image from 'next/image';
+export default  function Dashboard() {
+    const admindata = useRecoilValue(adminData);
+    const router = useRouter();
 
-export default function Dashboard(){
-//     const [userName, setUserName] = useState("default");
-//     const {data:session} = useSession();
-//     if (session){
-//         console.log(session)
-//         return (      
-//             <>
-//                 Signed in as {session.user.email} <br/>     
-//                 {/* <Image
-//                     src={session.user.image}
-//                     width={500}
-//                     height={500}
-//                     alt="Picture of the author"
-//                 /> */}
-//                 <button onClick={() => signOut()}>Sign out</button>      
-//             </>   
-//         )  
-//     }  
+    useEffect(()=>{
+        if (admindata === null) {
+            console.log("This is the admin data here :", admindata);
+            router.push('/dashboard/auth');
+        }
+    },[admindata]);
+
     return (    
-            <>  
-            	<div className="Container">
-            		<div className="mine_container">
-            			
-            		</div>
-            	</div>    
-            </>  
-        )
-};
+        <>  
+            <div className="Container">
+                
+            </div>    
+        </>  
+    );
+}

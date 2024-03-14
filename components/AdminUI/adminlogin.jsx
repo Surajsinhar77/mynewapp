@@ -3,11 +3,13 @@
 import Image from "next/image";
 import axios from 'axios';
 import {useEffect, useState} from "react";
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import { adminData } from '@/Store/auth';
+import { useRecoilState } from 'recoil';
+import { toast } from 'react-toastify';
+
 
 async function databaseConnectivity(email, password){
-    console.log("This is on the admin login page",email, password);
-    const routes = useRoute();
     try{
         const response = await axios.post('http://localhost:3000/api/auth/signin', 
             {
@@ -16,7 +18,8 @@ async function databaseConnectivity(email, password){
             }
         );
         console.log("This is from adminlogin page :",response);
-        routes.push('/dashboard');
+        return await response.data;
+
     }catch(err){
         console.log("from ther frontend signup ", err);
     }
@@ -25,13 +28,26 @@ async function databaseConnectivity(email, password){
 export default function AdminalPage(){
     const [email , setEmail] = useState("");
     const [password, setPassword]= useState("");
+    const [admindata, setAdminData] = useRecoilState(adminData);
+    const router = useRouter();
 
-    function loginFunc(e){
+    async function loginFunc(e){
         e.preventDefault()
-        console.log("click function is working ")
-        databaseConnectivity(email, password);
+        const data = await databaseConnectivity(email, password);
+        setAdminData(data?.data);
         setEmail("");
         setPassword("");
+
+        const notify = () => toast(data.message , 
+                {autoClose: 5000,
+                    style: {
+                        backgroundColor: data? 'green' : 'red',
+                        color: 'white',
+                    },
+                },
+        );
+        notify();
+        router.push('/dashboard')
     }
 
     return(
@@ -44,7 +60,7 @@ export default function AdminalPage(){
                     </div>
                 </div>
             </div>
-            <div className="right w-4/12 bg-slate-200  flex items-center flex-row px-20 h-screen">
+            <div className="right w-4/12  flex items-center flex-row px-20 h-screen">
                 <div className="formContainer">
                     <div className="headingpart my-5">
                         <h1 className="text-3xl">Manage your Work here  </h1>
