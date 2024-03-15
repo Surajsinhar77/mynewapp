@@ -23,7 +23,7 @@ model projects {
   img            String
   imgFolderName  String
   images         String[]
-  ImpLink        Json
+  ImpLink        String
   theDiscription Json
 }
 
