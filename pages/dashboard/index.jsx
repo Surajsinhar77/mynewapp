@@ -8,12 +8,6 @@ export default  function Dashboard() {
     const admindata = useRecoilValue(adminData);
     const router = useRouter();
 
-    // useEffect(()=>{
-    //     if (admindata === null) {
-    //         console.log("This is the admin data here :", admindata);
-    //         router.push('/dashboard/auth');
-    //     }
-    // },[admindata]);
 
     const [formData, setFormData] = useState({
 	    name: '',
@@ -40,17 +34,7 @@ export default  function Dashboard() {
 
     return (    
         <>  
-
-        	<ProjectForm/>
-
-        	// <div className="flex flex-row items-center">
-        	// 	<div className="form-container">
-        	// 		<form>
-        	// 			<div className="form-row">
-        	// 			</div>
-        	// 		</form> 
-        	// 	</div>
-        	// </div>
+        	<ProjectForm className="my-30"/>
         </>  
     );
 }
