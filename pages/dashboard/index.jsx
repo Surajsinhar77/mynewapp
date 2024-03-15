@@ -9,32 +9,20 @@ export default  function Dashboard() {
     const router = useRouter();
 
 
-    const [formData, setFormData] = useState({
-	    name: '',
-	    date: '',
-	    tags: '',
-	    link: '',
-	    imageName: '',
-	    images: '',
-	    impLink: '',
-	    description: ''
-	 });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
-    function handleSubmit(){
-    	
-    }
+    // useEffect(() => {
+    //     if(admindata === null){
+    //         router.push('/login');
+    //     } else {      
+    //         if(admindata.role !== 'admin'){
+    //             router.push('/login');
+    //         }
+    //     }
+    // }
+    // , []);
 
     return (    
         <>  
-        	<ProjectForm className="my-30"/>
+          <ProjectForm/>
         </>  
     );
 }
