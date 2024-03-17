@@ -5,7 +5,6 @@ import {storage} from '@/firebase/config';
 import axios from "axios";
 
 const uploadImages = async (files, projectName) => {
-  console.log("project name", projectName );
   try {
     if (!files || !Array.isArray(files) || files.length === 0) {
       throw new Error('No files selected for upload.');
@@ -54,7 +53,6 @@ export default function Example() {
   const handleImage = (e) => {
     e.preventDefault();
     const file = e.target.files;
-    console.log("File", ...file);
     setFile([...file]);
   }
 
