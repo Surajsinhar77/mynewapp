@@ -11,11 +11,11 @@ export default  function Dashboard() {
     const router = useRouter();
 
 
-    function uploadImage(file) {
-      var imageName = file.name;
-      var imageRef = storageRef.child('ProjectImages/' + imageName);
-      return imageRef.put(file); // Returns a Promise
-    }
+    // function uploadImage(file) {
+    //   var imageName = file.name;
+    //   var imageRef = storageRef.child('ProjectImages/' + imageName);
+    //   return imageRef.put(file); // Returns a Promise
+    // }
 
     // useEffect(() => {
     //     if(admindata === null){

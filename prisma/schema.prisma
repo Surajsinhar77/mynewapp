@@ -16,7 +16,7 @@ datasource db {
 
 model Projects {
     id              String      @id @default(auto()) @map("_id") @db.ObjectId
-    projectName     String
+    projectName     String     @unique
     dateStart       DateTime
     dateEnd         DateTime
     projectsTags    String
@@ -25,8 +25,8 @@ model Projects {
     projectOverview String
     feature         String[]
     techStack       String[]
-    imageFolderName String
-    imageRef        String
+    imageFolderName String?
+    imageRef        String?
 }
 
 model Users {

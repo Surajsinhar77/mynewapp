@@ -2,44 +2,40 @@ import { useState } from "react";
 import { FaUserCircle } from 'react-icons/fa';
 import { ref, uploadBytes } from 'firebase/storage';
 import {storage} from '@/firebase/config';
+import axios from "axios";
 
-const uploadImage = async (file) => {
+const uploadImages = async (files, projectName) => {
+  console.log("project name", projectName );
   try {
-    if (!file) {
-      throw new Error('No file selected for upload.');
+    if (!files || !Array.isArray(files) || files.length === 0) {
+      throw new Error('No files selected for upload.');
     }
 
-    const filename = `${Date.now()}-${file.name}`;
-    const storageRef = ref(storage, `ProjectImages/${filename}`);
+    const uploadTasks = files.map(async (file) => {
+      const filename = `${Date.now()}-${file.name}`;
+      const storageRef = ref(storage, `${projectName}/${filename}`);
+      
+      // Upload the file with promise handling
+      const snapshot = await uploadBytes(storageRef, file);
+      return snapshot;
+    });
 
-    // Upload the file with promise handling
-    uploadBytes(storageRef, file)
-      .then((uploadTask) => {
-        uploadTask.on('state_changed',
-          (snapshot) => {
-            // ... (progress and state handling)
-          },
-          (error) => {
-            console.error('Error uploading file:', error);
-          },
-          () => {
-            console.log('Uploaded a file!');
-            // ... (get download URL)
-          }
-        );
-      })
-      .catch((error) => {
-        console.error('Error uploading file:', error);
-        // Handle upload errors gracefully
-      });
+    // Wait for all upload tasks to complete
+    const results = await Promise.all(uploadTasks);
+    console.log('sucessFull uploaded Upload results:', results);
+    return results;
   } catch (error) {
-    console.error('Error uploading image:', error);
+    console.error('Error uploading images:', error);
     // Handle other errors
+    throw error;
   }
 };
 
 
 export default function Example() {
+  const [spaceRef, setSpaceRef] = useState("");
+  const [files, setFile] = useState([]);
+
   const [formData, setFormData] = useState({
     projectName: "",
     dateStart: "",
@@ -53,17 +49,16 @@ export default function Example() {
     imageFolderName: "",
     imgageRef: "",
   });
-
-
-
-  const [files, setFile] = useState([]);
-
+  
+  // Handle image function
   const handleImage = (e) => {
+    e.preventDefault();
     const file = e.target.files;
-    setFile(file);
+    console.log("File", ...file);
+    setFile([...file]);
   }
 
-
+  // Handle change function 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -71,15 +66,8 @@ export default function Example() {
       [name]: value
     });
   };
-
-
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log("Data", formData);
-    console.log("Files", files);
-  }
-
+  
+  // Save button function 
   function handleSave(e) {
     e.preventDefault();
     const techStackData = Array.from(document.querySelectorAll('#techStack')).map(element => element.value);
@@ -89,14 +77,16 @@ export default function Example() {
     setFormData({
       ...formData,
       techStack: techStackData,
-      feature: featureData
+      feature: featureData,
+      imageFolderName: formData.projectName,
     });
 
-    uploadImage(files[0]);
+    const spaceref = uploadImages(files, formData.projectName);
+    // setSpaceRef(spaceref);
     // console.log("Ref", spaceref);
   }
 
-
+  // Feature add more button 
   const [nOffFeacture, setnoOffFeacture] = useState([1]);
   const AddMoreFeature = (e) => {
     e.preventDefault();
@@ -105,12 +95,26 @@ export default function Example() {
     );
   }
 
+  // Tech stack add more button
   const [nOffTechStack, setnoOffTechStack] = useState([1]);
   const AddMoreTechStack = (e) => {
     e.preventDefault();
     setnoOffTechStack(
       prevnOffTechStack => [...prevnOffTechStack, 1]
     );
+  }
+
+  // handle submit function
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try{
+      const res = await axios.post('http://localhost:3000/api/dashboard', formData);
+      console.log("Response", res);
+      alert("Project uploaded successfully");
+    } catch (error) {
+      console.log("Error", error);
+      alert("Error uploading project");
+    }
   }
 
   return (
@@ -270,6 +274,11 @@ export default function Example() {
                             className="sr-only" 
                             multiple />
                         </label>
+                        {/* {
+                          files.forEach((file, index) => {
+                            return <p key={index} className="pl-1">{file.name}</p>
+                          })
+                        } */}
                         <p className="pl-1">or drag and drop</p>
                       </div>
                       <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
@@ -494,7 +503,6 @@ export default function Example() {
             </button>
           </div>
         </form>
-
       </div>
     </div>
   );
