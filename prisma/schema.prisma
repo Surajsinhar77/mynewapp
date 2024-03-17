@@ -10,24 +10,26 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = env(DATABASE_URL)
+  url      = env("DATABASE_URL")
 }
 
 
-model projects {
-  id             String      @id @default(auto()) @map("_id") @db.ObjectId
-  name           String
-  date           DateTime
-  tags           String[]
-  link           String
-  img            String
-  imgFolderName  String
-  images         String[]
-  ImpLink        String
-  theDiscription Json
+model Projects {
+    id              String      @id @default(auto()) @map("_id") @db.ObjectId
+    projectName     String
+    dateStart       DateTime
+    dateEnd         DateTime
+    projectsTags    String
+    projectLink     String
+    githubLink      String
+    projectOverview String
+    feature         String[]
+    techStack       String[]
+    imageFolderName String
+    imageRef        String
 }
 
-model users {
+model Users {
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
   name     String?
   email    String @unique

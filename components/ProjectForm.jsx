@@ -1,16 +1,68 @@
 import { useState } from "react";
 import { FaUserCircle } from 'react-icons/fa';
+import { ref, uploadBytes } from 'firebase/storage';
+import {storage} from '@/firebase/config';
+
+const uploadImage = async (file) => {
+  try {
+    if (!file) {
+      throw new Error('No file selected for upload.');
+    }
+
+    const filename = `${Date.now()}-${file.name}`;
+    const storageRef = ref(storage, `ProjectImages/${filename}`);
+
+    // Upload the file with promise handling
+    uploadBytes(storageRef, file)
+      .then((uploadTask) => {
+        uploadTask.on('state_changed',
+          (snapshot) => {
+            // ... (progress and state handling)
+          },
+          (error) => {
+            console.error('Error uploading file:', error);
+          },
+          () => {
+            console.log('Uploaded a file!');
+            // ... (get download URL)
+          }
+        );
+      })
+      .catch((error) => {
+        console.error('Error uploading file:', error);
+        // Handle upload errors gracefully
+      });
+  } catch (error) {
+    console.error('Error uploading image:', error);
+    // Handle other errors
+  }
+};
+
+
 export default function Example() {
   const [formData, setFormData] = useState({
-    name: '',
-    date: '',
-    tags: '',
-    link: '',
-    imageName: '',
-    images: '',
-    impLink: '',
-    description: ''
+    projectName: "",
+    dateStart: "",
+    dateEnd: "",
+    projectsTags: "",
+    projectLink: "",
+    gihubLink: "",
+    projectOverview: "",
+    feature: [""],
+    techStack: [""],
+    imageFolderName: "",
+    imgageRef: "",
   });
+
+
+
+  const [files, setFile] = useState([]);
+
+  const handleImage = (e) => {
+    const file = e.target.files;
+    setFile(file);
+  }
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,9 +72,47 @@ export default function Example() {
     });
   };
 
-  function handleSubmit() {
 
-  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log("Data", formData);
+    console.log("Files", files);
+  }
+
+  function handleSave(e) {
+    e.preventDefault();
+    const techStackData = Array.from(document.querySelectorAll('#techStack')).map(element => element.value);
+    const featureData = Array.from(document.querySelectorAll('#feature')).map(element => element.value);
+    // console.log("Tech Stack", techStackData, "Feature", featureData);
+
+    setFormData({
+      ...formData,
+      techStack: techStackData,
+      feature: featureData
+    });
+
+    uploadImage(files[0]);
+    // console.log("Ref", spaceref);
+  }
+
+
+  const [nOffFeacture, setnoOffFeacture] = useState([1]);
+  const AddMoreFeature = (e) => {
+    e.preventDefault();
+    setnoOffFeacture(
+      prevnOffFeacture => [...prevnOffFeacture, 1]
+    );
+  }
+
+  const [nOffTechStack, setnoOffTechStack] = useState([1]);
+  const AddMoreTechStack = (e) => {
+    e.preventDefault();
+    setnoOffTechStack(
+      prevnOffTechStack => [...prevnOffTechStack, 1]
+    );
+  }
+
   return (
     <div className="flex justify-center items-center bg-white py-20">
       <div className="mx-auto max-w-2xl">
@@ -45,10 +135,11 @@ export default function Example() {
                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                       <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">/projects/</span>
                       <input
+                        onChange={handleChange}
                         type="text"
-                        name="username"
-                        id="username"
-                        autoComplete="username"
+                        name="projectName"
+                        id="projectName"
+                        autoComplete="projectName"
                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="janesmith"
                       />
@@ -69,6 +160,7 @@ export default function Example() {
                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md items-center pl-3">
                       <label className="font-semibold text-blue-700">Start data</label>
                       <input
+                        onChange={handleChange}
                         type="date"
                         name="dateStart"
                         id="dateStart"
@@ -83,6 +175,7 @@ export default function Example() {
                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md items-center pl-3">
                       <label className="font-semibold text-blue-700">End data</label>
                       <input
+                        onChange={handleChange}
                         type="date"
                         name="dateEnd"
                         id="dateEnd"
@@ -104,10 +197,11 @@ export default function Example() {
                     {/* Input one */}
                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md items-center pl-3">
                       <input
+                        onChange={handleChange}
                         type="text"
-                        name="dateStart"
-                        id="dateStart"
-                        autoComplete="username"
+                        name="projectsTags"
+                        id="projectsTags"
+                        autoComplete="projectsTags"
                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="React.js"
                       />
@@ -115,7 +209,7 @@ export default function Example() {
 
                     {/* Input two */}
 
-                       <button className="text-black px-3 border rounded">Add</button>
+                      <button className="text-black px-3 border rounded">Add</button>
 
                   </div>
                 </div>
@@ -132,19 +226,21 @@ export default function Example() {
                     <div className="w-3/4 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md items-center pl-3">
                       <input
                         type="text"
-                        name="dateStart"
-                        id="dateStart"
-                        autoComplete="username"
+                        onChange={handleChange}
+                        name="projectLink"
+                        id="projectLink"
+                        autoComplete="projectLink"
                         className="w-full block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="Project link"
                       />
                     </div>
                     <div className="w-3/4 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md items-center pl-3">
                       <input
+                        onChange={handleChange}
                         type="text"
-                        name="dateStart"
-                        id="dateStart"
-                        autoComplete="username"
+                        name="gihubLink"
+                        id="gihubLink"
+                        autoComplete="gihubLink"
                         className="w-full block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="Github link"
                       />
@@ -166,7 +262,13 @@ export default function Example() {
                           className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                         >
                           <span>Upload a file</span>
-                          <input id="file-upload" name="file-upload" type="file" className="sr-only" multiple />
+                          <input 
+                            onChange={handleImage}
+                            id="file-upload" 
+                            name="ProjectImages" 
+                            type="file" 
+                            className="sr-only" 
+                            multiple />
                         </label>
                         <p className="pl-1">or drag and drop</p>
                       </div>
@@ -175,21 +277,6 @@ export default function Example() {
                   </div>
                 </div>
 
-
-                {/*<div className="col-span-full">
-                  <label htmlFor="photo" className="block text-sm font-medium leading-6 text-gray-900">
-                    Photo
-                  </label>
-                  <div className="mt-2 flex items-center gap-x-3">
-                    <FaUserCircle className="h-12 w-12 text-gray-300" aria-hidden="true" />
-                    <button
-                      type="button"
-                      className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                    >
-                      Change
-                    </button>
-                  </div>
-                </div>*/}
 
               </div>
             </div>
@@ -207,8 +294,9 @@ export default function Example() {
                   </label>
                   <div className="mt-2">
                     <textarea
-                      id="about"
-                      name="about"
+                      onChange={handleChange}
+                      id="projectOverview"
+                      name="projectOverview"
                       rows={3}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       defaultValue={''}
@@ -224,32 +312,40 @@ export default function Example() {
                   </label>
                 </div>
 
-                <div className="sm:col-span-3">
-                  <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
-                    Feature 1
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      type="text"
-                      name="first-name"
-                      id="first-name"
-                      autoComplete="given-name"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
+                
+                  {nOffFeacture.map((item, index) => 
+                    <div className="sm:col-span-3" key={index}>
+                      <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
+                        Feature {index + 1}
+                      </label>
+                      <div className="mt-2">
+                        <input
+                          type="text"
+                          name={`feature-${index}`}
+                          id="feature"
+                          autoComplete="given-name"
+                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        />
+                      </div>
+                    </div>
+                  )}
+                    
+            
+                
 
                 <div className="sm:col-span-3">
                   <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
                     Button to add Feature
                   </label>
                   <div className="mt-2 bg-black  rounded-lg">
-                    <button className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"> Add more Feature</button>
+                    <button  
+                      onClick={AddMoreFeature}
+                      className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"> Add more Feature</button>
                   </div>
                 </div>
 
-
-                <div className="sm:col-span-4">
+              {nOffTechStack.map((item, index) =>
+                <div className="sm:col-span-4" key={index}>
                   <label htmlFor="Name" className="block text-sm font-medium leading-6 text-gray-900">
                     Tech Stack
                   </label>
@@ -258,16 +354,18 @@ export default function Example() {
                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md items-center pl-3">
                       <input
                         type="text"
-                        name="dateStart"
-                        id="dateStart"
-                        autoComplete="username"
+                        name="techStack"
+                        id={`techStack`}
+                        autoComplete="techStack"
                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="React.js"
                       />
                     </div>
-                       <button className="text-black px-3 border rounded">Add</button>
+                      <button onClick={AddMoreTechStack} className="text-black px-3 border rounded">Add</button>
                   </div>
                 </div>
+              )}
+
               </div>
             </div>
 
@@ -284,6 +382,7 @@ export default function Example() {
                     <div className="relative flex gap-x-3">
                       <div className="flex h-6 items-center">
                         <input
+                          // onChange={handleChange}
                           id="comments"
                           name="comments"
                           type="checkbox"
@@ -300,6 +399,7 @@ export default function Example() {
                     <div className="relative flex gap-x-3">
                       <div className="flex h-6 items-center">
                         <input
+                          // onChange={handleChange}
                           id="candidates"
                           name="candidates"
                           type="checkbox"
@@ -374,15 +474,23 @@ export default function Example() {
             </div>
           </div>
 
-          <div className="mt-6 flex items-center justify-end gap-x-6">
-            <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
+          <div className="mt-6 flex items-center justify-end gap-x-3">
+            <button type="button" className="text-sm font-semibold leading-6 text-gray-900 px-3 py-2 rounded-lg hover:bg-gray-200 ">
               Cancel
             </button>
             <button
+              onClick={handleSave}
               type="submit"
               className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Save
+            </button>
+            <button
+              onClick={handleSubmit}
+              type="submit"
+              className="rounded-md bg-orange-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              Submit
             </button>
           </div>
         </form>
