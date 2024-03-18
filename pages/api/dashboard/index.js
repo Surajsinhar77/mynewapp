@@ -1,6 +1,8 @@
 import prisma from '@/db/db';
 
 export default async function handler(req, res) {
+    console.log("this is the body ", req.body);
+
     try {
         const userExist = await prisma.Projects.findUnique({
             where: { projectName: req.body.projectName }
@@ -17,7 +19,7 @@ export default async function handler(req, res) {
                 dateEnd: req.body.dateEnd,
                 projectsTags: req.body.projectsTags,
                 projectLink: req.body.projectLink,
-                gihubLink: req.body.gihubLink,
+                githubLink: req.body.githubLink,
                 projectOverview: req.body.projectOverview,
                 feature: req.body.feature,
                 techStack: req.body.techStack,
@@ -26,6 +28,6 @@ export default async function handler(req, res) {
         return res.status(200).json({ message: "Project created successfully", data: result });
     } catch (err) {
         console.log("this is the error here ", err);
-        return res.json({ message: err.message });
+        return res.status(403).json({ message: err.message });
     }
 }

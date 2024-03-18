@@ -41,7 +41,7 @@ export default function Example() {
     dateEnd: "",
     projectsTags: "",
     projectLink: "",
-    gihubLink: "",
+    githubLink: "",
     projectOverview: "",
     feature: [""],
     techStack: [""],
@@ -107,8 +107,11 @@ export default function Example() {
     e.preventDefault();
     try{
       const res = await axios.post('http://localhost:3000/api/dashboard', formData);
-      console.log("Response", res);
-      alert("Project uploaded successfully");
+      if(res.status === 200){
+        console.log("Response", res);
+        alert("Project uploaded successfully");
+      }
+      throw new Error("Error uploading project"); 
     } catch (error) {
       console.log("Error", error);
       alert("Error uploading project");
@@ -240,9 +243,9 @@ export default function Example() {
                       <input
                         onChange={handleChange}
                         type="text"
-                        name="gihubLink"
-                        id="gihubLink"
-                        autoComplete="gihubLink"
+                        name="githubLink"
+                        id="githubLink"
+                        autoComplete="githubLink"
                         className="w-full block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="Github link"
                       />
