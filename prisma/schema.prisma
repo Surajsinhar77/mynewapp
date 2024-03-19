@@ -17,8 +17,8 @@ datasource db {
 model Projects{
     id              String    @id @default(auto()) @map("_id") @db.ObjectId
     projectName     String    @unique
-    dateStart       DateTime
-    dateEnd         DateTime
+    dateStart       String
+    dateEnd         String
     projectsTags    String
     projectLink     String
     githubLink      String

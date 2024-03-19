@@ -110,8 +110,9 @@ export default function Example() {
       if(res.status === 200){
         console.log("Response", res);
         alert("Project uploaded successfully");
+        return ;
       }
-      throw new Error("Error uploading project"); 
+      throw new Error("from the response part Error uploading project"); 
     } catch (error) {
       console.log("Error", error);
       alert("Error uploading project");
@@ -147,6 +148,7 @@ export default function Example() {
                         autoComplete="projectName"
                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="janesmith"
+                        required
                       />
                     </div>
                   </div>
@@ -172,6 +174,7 @@ export default function Example() {
                         autoComplete="username"
                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="janesmith"
+                        required
                       />
                     </div>
 
@@ -187,6 +190,7 @@ export default function Example() {
                         autoComplete="username"
                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="janesmith"
+                        required
                       />
                     </div>
                   </div>
@@ -209,6 +213,7 @@ export default function Example() {
                         autoComplete="projectsTags"
                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="React.js"
+                        required
                       />
                     </div>
 
@@ -237,6 +242,7 @@ export default function Example() {
                         autoComplete="projectLink"
                         className="w-full block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="Project link"
+                        required
                       />
                     </div>
                     <div className="w-3/4 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md items-center pl-3">
@@ -248,6 +254,7 @@ export default function Example() {
                         autoComplete="githubLink"
                         className="w-full block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="Github link"
+                        required
                       />
                     </div>
                   </div>
@@ -273,7 +280,9 @@ export default function Example() {
                             name="ProjectImages" 
                             type="file" 
                             className="sr-only" 
-                            multiple />
+                            multiple 
+                            required
+                          />
                         </label>
                         {/* {
                           files.forEach((file, index) => {
@@ -335,6 +344,7 @@ export default function Example() {
                           id="feature"
                           autoComplete="given-name"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          required
                         />
                       </div>
                     </div>
@@ -369,6 +379,7 @@ export default function Example() {
                         autoComplete="techStack"
                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="React.js"
+                        required
                       />
                     </div>
                       <button onClick={AddMoreTechStack} className="text-black px-3 border rounded">Add</button>
@@ -396,6 +407,7 @@ export default function Example() {
                           id="comments"
                           name="comments"
                           type="checkbox"
+                          required
                           className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
                       </div>
@@ -413,6 +425,7 @@ export default function Example() {
                           id="candidates"
                           name="candidates"
                           type="checkbox"
+                          required
                           className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
                       </div>
@@ -429,6 +442,7 @@ export default function Example() {
                           id="offers"
                           name="offers"
                           type="checkbox"
+                          required
                           className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
                       </div>
@@ -450,6 +464,7 @@ export default function Example() {
                         id="push-everything"
                         name="push-notifications"
                         type="radio"
+                        required
                         className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                       />
                       <label htmlFor="push-everything" className="block text-sm font-medium leading-6 text-gray-900">
@@ -461,6 +476,7 @@ export default function Example() {
                         id="push-email"
                         name="push-notifications"
                         type="radio"
+                        required
                         className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                       />
                       <label htmlFor="push-email" className="block text-sm font-medium leading-6 text-gray-900">
@@ -472,6 +488,7 @@ export default function Example() {
                         id="push-nothing"
                         name="push-notifications"
                         type="radio"
+                        required
                         className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                       />
                       <label htmlFor="push-nothing" className="block text-sm font-medium leading-6 text-gray-900">
