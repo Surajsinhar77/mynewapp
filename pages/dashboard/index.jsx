@@ -18,10 +18,11 @@ export default  function Dashboard() {
     // }
 
     // useEffect(() => {
+    //     console.log("This is the admin data ", admindata);
     //     if(admindata === null){
-    //         router.push('/login');
+    //         router.push('/dashboard/auth');
     //     } else {      
-    //         if(admindata.role !== 'admin'){
+    //         if(admindata.userExist ){
     //             router.push('/login');
     //         }
     //     }

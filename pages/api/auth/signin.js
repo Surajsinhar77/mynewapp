@@ -2,6 +2,7 @@ import prisma from '@/db/db';
 import bcrypt from 'bcrypt';
 
 export default async function handler(req, res) {
+    console.log("Sign in this is the request body ", req.body);
     try{
         const userExist = await prisma.Users.findUnique({
             where:{email: req.body.email}

@@ -22,7 +22,9 @@ export default async function handler(req, res) {
                 githubLink: req.body.githubLink,
                 projectOverview: req.body.projectOverview,
                 feature: req.body.feature,
+                imageFolderName: req.body.imageFolderName,
                 techStack: req.body.techStack,
+                youtubeLink: req.body.youtubeLink??"",
             }
         });
         return res.status(200).json({ message: "Project created successfully", data: result });

@@ -1,13 +1,28 @@
+// "use server";
+
 import Navbar from '@/components/navbar';
 // import Image from 'next/image';
 import ProjectCard from './projectCard'
 import Footer from '@/components/Footer';
 import projectList from "@/pages/projectList.json";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function Page() {
-    
-    const ProjectList = projectList
-
+    const [ProjectList, setProjectList] = useState(projectList);
+    async function getAllprojectData(){
+        axios.get('http://localhost:3000/api/project/getprojects')
+        .then((response) => {
+            console.log("this is the response ", response);
+            setProjectList(response.data.data);
+        })
+        .catch((error) => {
+            console.log("this is the error ", error);
+        })
+    }
+    useEffect(()=>{
+        getAllprojectData()
+    },[]);   
 
     return (
         <>
@@ -24,7 +39,7 @@ export default function Page() {
                     <div className="pageImgAndAbout ">
                         <div className="mainImage grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto">
                             {
-                                ProjectList.map((project,index)=>{
+                                ProjectList?.map((project,index)=>{
                                         return <ProjectCard key={index} project={project} index={index}/>
                                     }
                                 )

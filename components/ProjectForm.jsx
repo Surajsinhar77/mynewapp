@@ -46,7 +46,8 @@ export default function Example() {
     feature: [""],
     techStack: [""],
     imageFolderName: "",
-    imgageRef: "",
+    imageRef: "",
+    youtubeLink: "",
   });
   
   // Handle image function
@@ -71,15 +72,15 @@ export default function Example() {
     const techStackData = Array.from(document.querySelectorAll('#techStack')).map(element => element.value);
     const featureData = Array.from(document.querySelectorAll('#feature')).map(element => element.value);
     // console.log("Tech Stack", techStackData, "Feature", featureData);
-
+    const imgFolderName = formData.projectName.replaceAll(" ", "");
     setFormData({
       ...formData,
       techStack: techStackData,
       feature: featureData,
-      imageFolderName: formData.projectName,
+      imageFolderName: imgFolderName,
     });
 
-    const spaceref = uploadImages(files, formData.projectName);
+    const spaceref = uploadImages(files, imgFolderName);
     // setSpaceRef(spaceref);
     // console.log("Ref", spaceref);
   }
@@ -104,6 +105,7 @@ export default function Example() {
 
   // handle submit function
   async function handleSubmit(e) {
+    console.log("Form Data : before api call", formData);
     e.preventDefault();
     try{
       const res = await axios.post('http://localhost:3000/api/dashboard', formData);
@@ -199,7 +201,7 @@ export default function Example() {
 
                 <div className="sm:col-span-4">
                   <label htmlFor="Name" className="block text-sm font-medium leading-6 text-gray-900">
-                    Project tags
+                    Project Domain
                   </label>
 
                   <div className="mt-2 flex gap-x-3">
@@ -212,15 +214,13 @@ export default function Example() {
                         id="projectsTags"
                         autoComplete="projectsTags"
                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                        placeholder="React.js"
+                        placeholder="Web Development"
                         required
                       />
                     </div>
 
                     {/* Input two */}
-
-                      <button className="text-black px-3 border rounded">Add</button>
-
+                      {/* <button className="text-black px-3 border rounded">Add</button> */}
                   </div>
                 </div>
 
@@ -254,6 +254,18 @@ export default function Example() {
                         autoComplete="githubLink"
                         className="w-full block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                         placeholder="Github link"
+                        required
+                      />
+                    </div>
+                    <div className="w-3/4 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md items-center pl-3">
+                      <input
+                        onChange={handleChange}
+                        type="text"
+                        name="youtubeLink"
+                        id="youtubeLink"
+                        autoComplete="youtubeLink"
+                        className="w-full block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                        placeholder="Youtube link"
                         required
                       />
                     </div>
@@ -350,9 +362,6 @@ export default function Example() {
                     </div>
                   )}
                     
-            
-                
-
                 <div className="sm:col-span-3">
                   <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
                     Button to add Feature
@@ -390,7 +399,7 @@ export default function Example() {
               </div>
             </div>
 
-            <div className="border-b border-gray-900/10 pb-12">
+            {/* <div className="border-b border-gray-900/10 pb-12">
               <h2 className="text-base font-semibold leading-7 text-gray-900">Notifications</h2>
               <p className="mt-1 text-sm leading-6 text-gray-600">
                 We'll always let you know about important changes, but you pick what else you want to hear about.
@@ -498,7 +507,7 @@ export default function Example() {
                   </div>
                 </fieldset>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="mt-6 flex items-center justify-end gap-x-3">

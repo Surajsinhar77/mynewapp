@@ -27,6 +27,7 @@ model Projects{
     techStack       String[]
     imageFolderName String?
     imageRef        String?
+    youtubeLink     String?
 }
 
 model Users{

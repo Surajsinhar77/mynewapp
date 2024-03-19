@@ -17,11 +17,15 @@ async function databaseConnectivity(email, password){
                 password: password
             }
         );
-        console.log("This is from adminlogin page :",response);
-        return await response.data;
-
+        if(response.status === 200){
+            console.log("This is from adminlogin page :",response);
+            return await response.data;
+        }
+        throw new Error("Error in the response");
     }catch(err){
         console.log("from ther frontend signup ", err);
+        const data = {data : err.response.data, status : err.response.status };
+        return data;
     }
 }
 
@@ -70,11 +74,11 @@ export default function AdminalPage(){
                         <form className="h-64 flex flex-col justify-between">
                             <div className="row flex flex-col">
                                 <label className="text-xs" htmlFor="">Email</label>
-                                <input className="h-10 rounded pl-3 mt-1" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="admin@myportfolio.com" type="email" required/>
+                                <input className="h-10 text-gray-700 rounded pl-3 mt-1" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="admin@myportfolio.com" type="email" required/>
                             </div>
                             <div className="row flex flex-col">
                                 <label className="text-xs" htmlFor="">Password</label>
-                                <input className="h-10 rounded pl-3 mt-1" value={password} onChange={(e)=>setPassword(e.target.value)} type="password" required/>
+                                <input className="h-10  text-gray-700 rounded pl-3 mt-1" value={password} onChange={(e)=>setPassword(e.target.value)} type="password" required/>
                             </div>
                             <div className="row pl-3">
                                 <div className="one">
