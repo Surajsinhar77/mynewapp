@@ -3,7 +3,9 @@ import prisma from '@/db/db';
 export default async function handler(req, res) {
     // console.log("this is the body ", req.body);
     try {
-        const projects = await prisma.projects.findMany();
+        const projects = await prisma.projects.findUnique({
+            where :{id: req.body.id}
+        });
 
         if (!projects) {
             return res.status(404).json({ message: "Not Project exist", projectExist: false });

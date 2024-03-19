@@ -9,11 +9,11 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function Page() {
-    const [ProjectList, setProjectList] = useState(projectList);
+    const [ProjectList, setProjectList] = useState([]);
+        
     async function getAllprojectData(){
         axios.get('http://localhost:3000/api/project/getprojects')
         .then((response) => {
-            console.log("this is the response ", response);
             setProjectList(response.data.data);
         })
         .catch((error) => {
