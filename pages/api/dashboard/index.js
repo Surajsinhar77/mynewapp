@@ -1,8 +1,6 @@
 import prisma from '@/db/db';
 
 export default async function handler(req, res) {
-    console.log("this is the body ", req.body);
-
     try {
         const userExist = await prisma.Projects.findUnique({
             where: { projectName: req.body.projectName }

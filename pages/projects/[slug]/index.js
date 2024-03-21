@@ -10,69 +10,66 @@ import { useRouter } from 'next/router';
 import { storage } from "@/firebase/config";
 
 export default function Project() {
-
-  const router = useRouter();
-  const {slug} = router.query;
-
+  const params = useParams();
+  const slug = params?.slug;
+  const [loading, setLoading] = useState(true);
   const [ProjectList, setProjectList] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
   const [mainPageImage, setMainImage] = useState("");
 
-    // Function to fetch and set the list of image URLs in the 'ProjectImages' folder
-        async function fetchImages (imageFolder){
-
-            try {
-                // Get a reference to the 'ProjectImages' folder
-                const imagesRef = ref(storage, `${imageFolder}`);
-                // List all items (files and sub-folders) in the 'ProjectImages' folder
-                const listResult = await listAll(imagesRef);
-                
-                // Create an array to store the URLs of the images
-                const urls = [];
-                // Iterate through each item in the listResult
-                for (const item of listResult.items) {
-                    // Get the download URL for each image
-                    const url = await getDownloadURL(item);
-                    // Push the URL to the urls array
-                    urls.push(url);
-                }
-                
-                // Set the image URLs state
-                setImageUrls(urls);
-            } catch (error) {
-                console.error('Error fetching images:', error);
-            }
-        };
-
-        
-  async function getAllprojectData(){
-    try{
-      const response = await axios.post('http://localhost:3000/api/project/getprojectById',{id:slug});
-      if(response.status === 200){
+  async function getAllprojectData() {
+    try {
+      const response = await axios.post('http://localhost:3000/api/project/getprojectById', { id: slug });
+      if (response.status === 200) {
         setProjectList(response.data.data);
       }
-    }catch(err){
+    } catch (err) {
       console.log("here is the error : ", err);
+    } finally {
+      setLoading(false);
     }
   }
 
-  useEffect(()=>{
-    if(slug){
+  useEffect(() => {
+    if (slug) {
       getAllprojectData();
     }
-  },[]);  
+  }, [slug]);
 
-  useEffect(()=>{
-    fetchImages(ProjectList?.imageFolderName);
-    setMainImage(imageUrls[0]);
-  },[ProjectList]);
+  useEffect(() => {
+    if (ProjectList?.imageFolderName) {
+      fetchImages(ProjectList.imageFolderName);
+    }
+  }, [ProjectList]);
 
+  useEffect(() => {
+    if (imageUrls.length > 0) {
+      setMainImage(imageUrls[0]);
+    }
+  }, [imageUrls]);
+
+  async function fetchImages(imageFolder) {
+    try {
+      const imagesRef = ref(storage, `${imageFolder}`);
+      const listResult = await listAll(imagesRef);
+      const urls = await Promise.all(listResult.items.map(async (item) => {
+        return await getDownloadURL(item);
+      }));
+      setImageUrls(urls);
+    } catch (error) {
+      console.error('Error fetching images:', error);
+    }
+  };
 
   function functionToChange(e) {
     e.preventDefault();
-    // console.log("this is from the project slug index: ", e.target.attributes[0].nodeValue);
     setMainImage(e.target.attributes[0].nodeValue);
   }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
 
 
   return (
@@ -83,28 +80,28 @@ export default function Project() {
         <h1 className="text-3xl my-8 text-center uppercase">
           {ProjectList?.projectName}
         </h1>
-        <div className="mainContainer-project border h-full flex w-full max-lg:flex-col rounded-xl">
+        <div className="mainContainer-project h-full flex w-full max-lg:flex-col rounded-xl">
           <div className="mainImage p-3  w-4/5 h-fit max-lg:w-full">
             <div>
               <img
-                src={`${imageUrls[0]}`}
+                src={`${mainPageImage}`}
                 alt="Project Image"
                 className="w-full object-cover h-[420px] max-lg:h-auto"
               />
             </div>
 
-            <div className="otherImageOption border flex w-full mt-7 overflow-x-auto max-lg:grid max-lg:grid-cols-2 gap-2 max-lg:h-fit m-auto place-content-center rounded-xl border-green-300">
+            <div className="otherImageOption  flex w-full mt-7 overflow-x-auto max-lg:grid max-lg:grid-cols-2 gap-2 max-lg:h-fit m-auto place-content-center rounded border-green-300">
               {imageUrls?.map((item, index) => (
                 <div
                   key={index}
                   onClick={(e) => functionToChange(e)}
                   name={index}
-                  className="imagesOfProject w-28 h-fit border-2 border-orange-600 rounded-xl m-4 hover:shadow-lg cursor-pointer"
+                  className="imagesOfProject w-28 h-fit border-0 border-orange-600 rounded m-4 hover:shadow-lg cursor-pointer"
                 >
                   <img
                     src={item}
                     alt="Project Image"
-                    className="w-full object-cover rounded-xl"
+                    className="w-full object-cover rounded"
                   />
                 </div>
               ))}
@@ -120,19 +117,31 @@ export default function Project() {
             </div>
             <h1 className="mb-5">NAME : {ProjectList?.projectName} </h1>
             <div className="tags max-lg:flex max-sm:flex-col">
-              <span>TAGS &nbsp;</span>
-              
-                  <button
+                  <span
                     className="py-1 px-2 text-sm border rounded-md border-red-500 mr-3 mb-3 text-red-500"
                   >
                     {ProjectList?.projectsTags}
-                  </button>
-               
+                  </span>
             </div>
+
+                        <div className="tags max-lg:flex max-sm:flex-col mt-9 text-center">
+                          <span className="text-lg"> TECH STACK </span>
+                          <br/>
+                          {
+                            ProjectList?.techStack?.map((item, index)=>
+                              <button
+                                key={index}
+                                className="py-1 px-2 text-sm border rounded-md border-green-500 mr-3 mb-3 text-green-500"
+                              >
+                                {item}
+                              </button>
+                            )
+                          }
+                        </div>
           </div>
         </div>
 
-        <div className="mainContainer-project border h-full flex items-center p-7 my-10 flex-col rounded-xl">
+        <div className="mainContainer-project  h-full flex items-center p-7 my-10 flex-col rounded-xl">
           <span className="uppercase text-2xl font-medium mb-4">
             Description
           </span>
@@ -177,14 +186,13 @@ export default function Project() {
           </h1>
         </div>
 
-        <div className="mainContainer-project border h-auto flex items-center p-7 my-10 flex-col rounded-xl">
+        <div className="mainContainer-project h-auto flex items-center p-7 my-10 flex-col rounded-xl">
           <div className="flex justify-center items-center h-auto w-full ">
             {/* <VideoPlayer /> */}
             <iframe
               className="w-[720px] h-[360px] max-lg:h-auto border-2 border-green-500 rounded-lg"
               src={ProjectList?.youtubeLink}
-              frameBorder="0"
-              allowFullScreen="true"
+              allowFullScreen={true}
             ></iframe>
           </div>
         </div>
@@ -193,7 +201,3 @@ export default function Project() {
     </>
   );
 }
-
-// ProjectList?.[params?.slug]?.ImpLink?.liveLink?.Link? ProjectList?.[params?.slug]?.ImpLink?.liveLink?.LiveLink : '/' 
-
-// ProjectList?.[params?.slug]?.ImpLink?.gitHubLink?.Link? ProjectList?.[params?.slug]?.ImpLink?.gitHubLink?.githubLink : '/'
