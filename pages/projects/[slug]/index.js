@@ -86,7 +86,7 @@ export default function Project() {
               <img
                 src={`${mainPageImage}`}
                 alt="Project Image"
-                className="w-full object-cover h-[420px] max-lg:h-auto"
+                className="w-full object-cover h-[520px] max-lg:h-auto"
               />
             </div>
 
