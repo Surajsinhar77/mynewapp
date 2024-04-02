@@ -3,10 +3,34 @@ import Link from 'next/link';
 import ProjectCard from "@/pages/projects/projectCard";
 import Blogs from "./Blogs";
 import projectList from '@/pages/projectList.json';
+import { useState , useEffect} from "react";
+import axios from "axios";
 
 export default function Index() {
 
-    const ProjectList = projectList;
+    const [isLoading, setIsLoading] = useState(true); // Add isLoading state
+
+    const [ProjectList, setProjectList] = useState([]);
+
+    async function getAllprojectData() {
+        setIsLoading(true); // Set isLoading to true before making the API call
+        axios.get('http://localhost:3000/api/project/getprojects')
+            .then((response) => {
+                setProjectList(response.data.data);
+            })
+            .catch((error) => {
+                console.log("this is the error ", error);
+            })
+            .finally(() => {
+                setIsLoading(false); // Set isLoading to false after the API call is completed
+            });
+    }
+
+    useEffect(() => {
+        getAllprojectData();
+    }, []);
+
+    // const ProjectList = projectList;
 
     const BlogsContent = [
         {
@@ -46,22 +70,10 @@ export default function Index() {
         <>
             <div>
                 <div className="myAbout p-5 bg-dark text-white rounded">
-                    <h3 className="text-2xl mb-5">Hi &rsquo; Im Suraj.</h3>
-                    <p className="font-light text-lg tracking-wide leading-relaxed text-justify">
-                        <span>
-                        I am a software developer with a passion for web development and data structures and algorithms. I have skills in MERN stack (MongoDB, Express, React, and Node.js) and I am learning Next.js to create dynamic and interactive web applications. I have also completed several online courses and projects on various topics such as HTML, CSS, JavaScript, Bootstrap, RESTful APIs, authentication, and deployment.
-                        </span>
-                        <br /><br />
-                        <span>
-                        I am currently looking for freelance opportunities in web development where I can apply my skills and knowledge to create innovative and user-friendly websites for clients. I have experience in working with different tools and platforms such as GitHub, Heroku, Netlify, Firebase, and AWS. I can also work with different databases such as MySQL, PostgreSQL, MongoDB, and Firebase.
-                        </span>
-                        <br /><br />
-                        <span>
-                        I am always eager to learn new technologies and systems that can enhance my development capabilities and broaden my horizons. I am interested in topics such as cloud computing, machine learning, artificial intelligence, blockchain, and cybersecurity. I also enjoy solving coding challenges and participating in hackathons.
-                        </span>
-                        <br /><br />
-                        <span>
-                        If you are interested in my work or want to collaborate with me, please feel free to contact me via email or LinkedIn. I look forward to hearing from you.
+                    <h3 className="text-2xl my-5 ">Hi &rsquo; Im Suraj.</h3>
+                    <p className="font-light text-lg tracking-wide leading-relaxed text-justify ">
+                        <span className="my-6">
+                            I am a software developer with a passion for web development and data structures and algorithms. I have     skills in MERN stack (MongoDB, Express, React, and Node.js) and I am learning Next.js to create dynamic     and interactive web applications. I have also completed several online courses and projects on various  topics such as HTML, CSS, JavaScript, Bootstrap, RESTful APIs, authentication, and deployment.
                         </span>
                     </p>
                     <h2 className="mt-5 text-xl font-light text-green-700">
@@ -74,7 +86,7 @@ export default function Index() {
 
                         <Link  href="/" className="my-3   bottom-1 py-2 px-2 rounded-lg m-auto">  <FaDiscord className="text-blue-700 text-3xl"/>  </Link>
 
-                        <Link  href="/" className=" my-3   bottom-1 py-2 px-2 rounded-lg m-auto">  <FaCode className="text-gray-800 text-white text-3xl"/>  </Link>
+                        <Link  href="/" className=" my-3   bottom-1 py-2 px-2 rounded-lg m-auto">  <FaCode className=" text-white text-3xl"/>  </Link>
                     </div>
                     <div className="codingPlateformLink">
 
@@ -85,7 +97,7 @@ export default function Index() {
                     <div className="latestProject w-full">
                         <h3 className="text-2xl text-white underline">Latest Project</h3>
                         <div className="mx-2 mt-4 h-0.5 rounded-full bg-gray-300"></div>
-                        <div className="mx-2 py-5 grid grid-cols-1 md:grid-cols-2 gap-6 m-auto xl:grid-cols-3">
+                        <div className="mx-2 py-9 grid grid-cols-1 md:grid-cols-2 gap-6 m-auto xl:grid-cols-3">
                         {
                             ProjectList.map((project,index)=>{
                                     return <ProjectCard key={index} project={project} index={index}/>

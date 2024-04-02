@@ -6,13 +6,13 @@ import {FaSuitcase,FaGears} from 'react-icons/fa6';
 import {GiAchievement} from 'react-icons/gi';
 import ProjectCard from '../projects/projectCard';
 import dynamic from 'next/dynamic';
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import {GrContact} from 'react-icons/gr';
 import {BiMailSend} from 'react-icons/bi';
 import {FaLinkedinIn} from 'react-icons/fa6';
 import {CgWebsite} from 'react-icons/cg';
 import Link from 'next/link';
-import projectList from "./../projectList.json";
+import axios from 'axios';
 
 export default function About() {
     const [switching, setSwitchingData] =useState(1);
@@ -25,7 +25,31 @@ export default function About() {
     }
     const SubRouter = subRouterComponents[switching] || null;
 
-    const ProjectList = projectList;
+    //const ProjectList = projectList;
+
+    const [isLoading, setIsLoading] = useState(true); // Add isLoading state
+
+    const [ProjectList, setProjectList] = useState([]);
+
+    async function getAllprojectData() {
+        setIsLoading(true); // Set isLoading to true before making the API call
+        axios.get('http://localhost:3000/api/project/getprojects')
+            .then((response) => {
+                setProjectList(response.data.data);
+            })
+            .catch((error) => {
+                console.log("this is the error ", error);
+            })
+            .finally(() => {
+                setIsLoading(false); // Set isLoading to false after the API call is completed
+            });
+    }
+
+    useEffect(() => {
+        getAllprojectData();
+    }, []);
+
+
     return (
         <>
         <div className="sm:w-9/12 w-full m-auto px-5">
