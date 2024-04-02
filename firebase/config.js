@@ -5,11 +5,12 @@ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
   apiKey: process.env.apiKey,
   authDomain: process.env.authDomain,
   projectId: process.env.projectId,
-  storageBucket: process.env.storageBucket,
+  storageBucket: "learning-firebase-84e27.appspot.com",
   messagingSenderId: process.env.messagingSenderId,
   appId: process.env.appId
 };
