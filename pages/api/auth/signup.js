@@ -1,8 +1,9 @@
 import prisma from '@/db/db'; //should be same name from the export  
 import bcrypt from 'bcrypt';
-
+import cors from '../middleware/cors';
 
 export default async function handler(req, res){
+	await cors(req, res);
 	console.log("This is body : ",req.body)
 	try{
 		const userExist = await prisma.users.findUnique({

@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer')
+import cors from '../middleware/cors';
 
 //Email data from Env file
 const myEmail = process.env.myEmail;
@@ -16,6 +17,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export default async function handler(req, res) {
+    await cors(req, res);
     const { name, email, subject, message } = req.body;
     try {
         const mailOptions = {

@@ -1,6 +1,9 @@
 import prisma from '@/db/db';
+import cors from '../middleware/cors';
+
 
 export default async function handler(req, res) {
+    await cors(req, res);
     try {
         const userExist = await prisma.Projects.findUnique({
             where: { projectName: req.body.projectName }
