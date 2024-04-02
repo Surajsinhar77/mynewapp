@@ -73,7 +73,7 @@ export default function ProjectCard({project, index}) {
               <h2 className="text-center text-lg mb-3">{project?.projectName}</h2>
             </Link>
             
-              <button  className="py-1 px-1 text-sm border rounded-md border-red-500 mr-3 mb-3 text-red-500">{project.projectsTags}</button>
+              <button  className="py-1 px-1 text-sm border rounded-md border-red-500 mr-3 mb-3 text-red-500">{project?.projectsTags}</button>
             
           </div>
         </div>
