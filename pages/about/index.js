@@ -33,7 +33,7 @@ export default function About() {
 
     async function getAllprojectData() {
         setIsLoading(true); // Set isLoading to true before making the API call
-        axios.get('http://localhost:3000/api/project/getprojects')
+        axios.get('https://mynewapp-peach.vercel.app/api/project/getprojects')
             .then((response) => {
                 setProjectList(response.data.data);
             })

@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 
 async function databaseConnectivity(email, password){
     try{
-        const response = await axios.post('http://localhost:3000/api/auth/signin', 
+        const response = await axios.post('https://mynewapp-peach.vercel.app/api/auth/signin', 
             {
                 email: email, 
                 password: password
