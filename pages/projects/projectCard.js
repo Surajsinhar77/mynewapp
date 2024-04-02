@@ -4,7 +4,7 @@ import { storage } from "@/firebase/config";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 
 
-export default function ProjectCard({project,index}) {
+export default function ProjectCard({project, index}) {
 
   // console.log("this is from the project card page : ", project, index);
 
@@ -54,7 +54,7 @@ export default function ProjectCard({project,index}) {
           </div> */}
 
           <div className="productImage w-full hover:bg-gray-200 hover:liner flex items-center">
-            <Link href="/projects/[slug]/" as={`/projects/${project.id}/`} className="m-auto">
+            <Link href="/projects/[slug]/" as={`/projects/${project?.id}/`} className="m-auto">
                <img src={imageUrls[0]} width="400" height="0" className="h-48 object-cover" alt="project image" />
             </Link>
           </div>
@@ -67,7 +67,7 @@ export default function ProjectCard({project,index}) {
             <h2 className="text-center">{project?.name}</h2>
           </Link> */}
           <div className="useTech p-3 border-t-2">
-            <Link href="/projects/[slug]/" as={`/projects/${project.id}/`} 
+            <Link href="/projects/[slug]/" as={`/projects/${project?.id}/`} 
               className="m-auto hover:text-blue-600 hover:underline
               ">
               <h2 className="text-center text-lg mb-3">{project?.projectName}</h2>
