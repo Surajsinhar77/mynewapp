@@ -17,17 +17,17 @@ export default  function Dashboard() {
     //   return imageRef.put(file); // Returns a Promise
     // }
 
-    // useEffect(() => {
-    //     console.log("This is the admin data ", admindata);
-    //     if(admindata === null){
-    //         router.push('/dashboard/auth');
-    //     } else {      
-    //         if(admindata.userExist ){
-    //             router.push('/login');
-    //         }
-    //     }
-    // }
-    // , []);
+    useEffect(() => {
+        console.log("This is the admin data ", admindata);
+        if(admindata === null){
+            router.push('/dashboard/auth');
+        } else {      
+            if(admindata.userExist ){
+                router.push('/login');
+            }
+        }
+    }
+    , []);
 
     return (    
         <>  
