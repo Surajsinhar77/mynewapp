@@ -1,4 +1,4 @@
-import ClimbingBoxLoader from from "react-spinners/ClipLoader";
+import { ClimbingBoxLoader } from "react-spinners";
 import {useEffect} from "react";
 
 
