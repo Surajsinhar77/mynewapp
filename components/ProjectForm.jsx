@@ -108,7 +108,7 @@ export default function Example() {
     console.log("Form Data : before api call", formData);
     e.preventDefault();
     try{
-      const res = await axios.post('https://mynewapp-peach.vercel.app/api/dashboard', formData);
+      const res = await axios.post('/api/dashboard', formData);
       if(res.status === 200){
         console.log("Response", res);
         alert("Project uploaded successfully");

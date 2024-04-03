@@ -19,7 +19,7 @@ export default function Project() {
 
   async function getAllprojectData() {
     try {
-      const response = await axios.post('https://mynewapp-peach.vercel.app/api/project/getprojectById', { id: slug });
+      const response = await axios.post('/api/project/getprojectById', { id: slug });
       if (response.status === 200) {
         setProjectList(response.data.data);
       }

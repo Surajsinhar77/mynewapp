@@ -20,7 +20,7 @@ export default function Contact() {
         e.preventDefault();
         setButtonLoader(true);
         try {
-            const response = await fetch('https://mynewapp-peach.vercel.app/api/contact', {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
