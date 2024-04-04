@@ -14,16 +14,14 @@ export default function Index() {
 
     async function getAllprojectData() {
         setIsLoading(true); // Set isLoading to true before making the API call
-        axios.get('/api/project/getprojects')
-            .then((response) => {
-                setProjectList(response.data.data);
-            })
-            .catch((error) => {
-                console.log("this is the error ", error);
-            })
-            .finally(() => {
-                setIsLoading(false); // Set isLoading to false after the API call is completed
-            });
+        const result = await fetch('/api/project/getprojects', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const data = await result.json();
+        setProjectList(data.data);
     }
 
     useEffect(() => {

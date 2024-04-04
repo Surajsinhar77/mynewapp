@@ -1,10 +1,10 @@
 import Navbar from '@/components/navbar';
 import ProjectCard from './projectCard';
 import Footer from '@/components/Footer';
-import projectList from "@/pages/projectList.json";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { projectList } from '@/Store/auth';
+import { useRecoilState } from 'recoil';
 // Import the loader component
 // import Loader from './Loader';
 
@@ -18,26 +18,28 @@ function Loader() {
 
 export default function Page() {
     const [isLoading, setIsLoading] = useState(true); // Add isLoading state
-
-    const [ProjectList, setProjectList] = useState([]);
+    const [ProjectList, setProjectList] = useRecoilState(projectList);
+    // const [ProjectList, setProjectList] = useState([]);
 
     async function getAllprojectData() {
         setIsLoading(true); // Set isLoading to true before making the API call
-        axios.get('/api/project/getprojects')
-            .then((response) => {
-                setProjectList(response.data.data);
-            })
-            .catch((error) => {
-                console.log("this is the error ", error);
-            })
-            .finally(() => {
-                setIsLoading(false); // Set isLoading to false after the API call is completed
-            });
+        const result = await fetch('/api/project/getprojects', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const data = await result.json();
+        setProjectList(data.data);
+        console.log(data.data);
     }
 
     useEffect(() => {
         getAllprojectData();
     }, []);
+
+    console.log(ProjectList.map((project) => project)
+        );
 
     return (
         <>
@@ -57,9 +59,13 @@ export default function Page() {
                             <Loader /> // Display the loader component
                         ) : (
                             <div className="mainImage grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto">
-                                {ProjectList?.map((project, index) => {
-                                    return <ProjectCard key={index} project={project} index={index} />;
-                                })}
+                                {
+                                    ProjectList.map((project, index) => {
+                                        return (
+                                            <ProjectCard key={index} project={project} index={index}/>
+                                        );
+                                    })
+                                }
                             </div>
                         )}
                     </div>

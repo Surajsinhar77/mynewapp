@@ -6,7 +6,7 @@ import { ref, listAll, getDownloadURL } from "firebase/storage";
 
 export default function ProjectCard({project, index}) {
 
-  // console.log("this is from the project card page : ", project, index);
+  console.log("this is from the project card page : ", project, index);
 
   const [imageUrls, setImageUrls] = useState([]);
 
