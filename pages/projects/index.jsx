@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { projectList } from '@/Store/auth';
 import { useRecoilState } from 'recoil';
+import { set } from 'mongoose';
 // Import the loader component
 // import Loader from './Loader';
 
@@ -23,23 +24,14 @@ export default function Page() {
 
     async function getAllprojectData() {
         setIsLoading(true); // Set isLoading to true before making the API call
-        const result = await fetch('/api/project/getprojects', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        const data = await result.json();
-        setProjectList(data.data);
-        console.log(data.data);
+        const project = await axios.get('/api/project/getprojects');
+        setProjectList(project.data.data);
     }
 
     useEffect(() => {
         getAllprojectData();
+        setIsLoading(false);
     }, []);
-
-    console.log(ProjectList.map((project) => project)
-        );
 
     return (
         <>
@@ -55,9 +47,7 @@ export default function Page() {
 
                     <div className="pageImgAndAbout ">
                         {/* Conditional rendering based on isLoading state */}
-                        {isLoading ? (
-                            <Loader /> // Display the loader component
-                        ) : (
+                        {isLoading ? <Loader /> :
                             <div className="mainImage grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto">
                                 {
                                     ProjectList.map((project, index) => {
@@ -67,7 +57,7 @@ export default function Page() {
                                     })
                                 }
                             </div>
-                        )}
+                        }
                     </div>
                 </div>
                 <Footer />
