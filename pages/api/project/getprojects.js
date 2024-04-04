@@ -3,7 +3,7 @@ import { runCors } from '@/pages/lib/init-middleware';
 
 
 export default async function handler(req, res) {
-    // console.log("this is the body ", req.body);
+    console.log("this is the body ", req.body);
     await runCors(req, res);
     try {
         const projects = await prisma.projects.findMany();

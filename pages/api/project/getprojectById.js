@@ -3,7 +3,6 @@ import { runCors } from '@/pages/lib/init-middleware';
 
 
 export default async function handler(req, res) {
-    // console.log("this is the body ", req.body);
     await runCors(req, res);
     try {
         const projects = await prisma.projects.findUnique({
@@ -13,7 +12,6 @@ export default async function handler(req, res) {
         if (!projects) {
             return res.status(404).json({ message: "Not Project exist", projectExist: false });
         }
-
         return res.status(200).json({ message: "All Project fetch successfully", data: projects });
     } catch (err) {
         console.log("this is the error here ", err);

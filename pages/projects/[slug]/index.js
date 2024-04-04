@@ -19,15 +19,7 @@ export default function Project() {
 
   async function getAllprojectData() {
     try {
-      const response = await fetch('/api/project/getprojectById',{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id: slug }),
-      });
-
-
+      const response = await axios.post('/api/project/getprojectById',{id: slug});
       if (response.status === 200) {
         setProjectList(response.data.data);
       }
