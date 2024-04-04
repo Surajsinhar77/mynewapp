@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { projectList } from '@/Store/auth';
 import { useRecoilState } from 'recoil';
-import { set } from 'mongoose';
 // Import the loader component
 // import Loader from './Loader';
 
@@ -24,7 +23,8 @@ export default function Page() {
 
     async function getAllprojectData() {
         setIsLoading(true); // Set isLoading to true before making the API call
-        const project = await axios.get('/api/project/getprojects');
+        // const project = await axios.get('/api/project/getprojects');
+        const project = await getProjects();
         setProjectList(project.data.data);
     }
 

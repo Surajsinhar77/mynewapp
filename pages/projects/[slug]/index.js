@@ -9,6 +9,12 @@ import { ref, listAll, getDownloadURL } from "firebase/storage";
 import { useRouter } from 'next/router';
 import { storage } from "@/firebase/config";
 
+// export async function getData() {
+//   'use server';
+//   // Logic to retrieve data (GET)
+
+// }
+
 export default function Project() {
   const params = useParams();
   const slug = params?.slug;
