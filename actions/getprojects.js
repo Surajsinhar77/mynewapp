@@ -3,7 +3,6 @@ import prisma from '@/db/db';
 
 export async function getProjects() {
     "use server"
-
     try {
         const projects = await prisma.projects.findMany();
 

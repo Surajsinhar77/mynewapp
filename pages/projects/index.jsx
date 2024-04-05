@@ -16,21 +16,23 @@ function Loader() {
     );
 }
 
-export default function Page() {
-    const [isLoading, setIsLoading] = useState(true); // Add isLoading state
-    const [ProjectList, setProjectList] = useRecoilState(projectList);
-    // const [ProjectList, setProjectList] = useState([]);
+export async function getServerSideProps() {
+    // Fetch project data from your API route (replace with your actual endpoint)
+    // i want to use production url
+    const response = await fetch('https://mynewapp-peach.vercel.app/api/project/getprojects');
+    const data = await response.json();
+    // Return the fetched data as props
+    return { props: { projects: data.data } };
+}
 
-    async function getAllprojectData() {
-        setIsLoading(true); // Set isLoading to true before making the API call
-        const project = await axios.get('/api/project/getprojects');
-        setProjectList(project.data.data);
-    }
+export default function Page({projects}) {
+    console.log("project index page ", projects)
+    const [isLoading, setIsLoading] = useState(true); // Add isLoading state
+    const [projectsList, setProjects] = useRecoilState(projectList);
 
     useEffect(() => {
-        getAllprojectData();
-        setIsLoading(false);
-    }, []);
+        setProjects(projects);
+    },[]);
 
     return (
         <>
@@ -46,17 +48,18 @@ export default function Page() {
 
                     <div className="pageImgAndAbout ">
                         {/* Conditional rendering based on isLoading state */}
-                        {isLoading ? <Loader /> :
+                        
                             <div className="mainImage grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto">
                                 {
-                                    ProjectList.map((project, index) => {
+                                    projectsList.map((project, index) => {
+                                        console.log("asdasdasdhjasdjkashdkjas")
                                         return (
                                             <ProjectCard key={index} project={project} index={index}/>
                                         );
                                     })
                                 }
                             </div>
-                        }
+                        
                     </div>
                 </div>
                 <Footer />

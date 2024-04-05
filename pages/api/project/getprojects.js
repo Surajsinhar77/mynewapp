@@ -2,7 +2,7 @@ import prisma from '@/db/db';
 import { runCors } from '@/lib/init-middleware';
 
 export default async function handler(req, res) {
-    await runCors(req, res);
+    runCors(req, res);
     try {
         const projects = await prisma.projects.findMany();
 
@@ -16,3 +16,6 @@ export default async function handler(req, res) {
         return res.status(403).json({ message: err.message });
     }
 }
+
+// pages/api/project/getprojects.js
+// This is the API route that fetches the project data from the database. It uses the Prisma client to query the database and return the project data as a JSON response. The runCors middleware is used to enable CORS for the API route.
