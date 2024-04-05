@@ -1,10 +1,7 @@
-// init-middleware.js
-
-import Cors from 'cors';
-import { NextApiRequest, NextApiResponse } from 'next';
+import cors from 'cors';
 
 // Initialize CORS middleware
-const cors = Cors({
+const corsMiddleware = cors({
   // Allow requests from specific origins
   origin: 'https://mynewapp-peach.vercel.app/',
   methods: ['GET', 'POST', 'OPTIONS'],
@@ -12,16 +9,17 @@ const cors = Cors({
 
 // Middleware function to wrap CORS
 function applyMiddleware(handler) {
-  return (req, res) =>
-    new Promise((resolve, reject) => {
-      corsMiddleware(req, res, (result) => {
-        if (result instanceof Error) {
-          return reject(result);
-        }
-        return resolve(handler(req, res));
-      });
+  return (req, res, next) => { // Add 'next' parameter
+    corsMiddleware(req, res, (err) => {
+      if (err) {
+        return next(err); // Pass any error to the next middleware
+      }
+      return handler(req, res, next); // Call the next middleware
     });
+  };
 }
 
 // Example usage:
-export const runCors = initMiddleware(cors);
+export const runCors = applyMiddleware((req, res) => {
+  // Your route handler logic goes here
+});
