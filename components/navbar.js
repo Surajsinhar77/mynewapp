@@ -34,7 +34,7 @@ export default function Navbar() {
                     <div className="logoContainer">
                         <Link href='/' className="flex items-center">
                             <Image src="/Images/profile.png" alt="logo" width={50} height={50} className="rounded-full" />
-                            <h1 className="text-center font-bold text-sm uppercase font-light">       
+                            <h1 className="text-center text-sm uppercase font-light">       
                                 Suraj Kumar 
                             </h1>
                         </Link> 
@@ -52,7 +52,7 @@ export default function Navbar() {
                         </div>
 
 
-                        <div className="navationtion navItem w-full max-lg:w-full mr-5 md:flex text-blue-700 hidden text-xl">
+                        <div className="navationtion navItem w-full max-lg:w-full mr-5 md:flex hidden text-xl">
                             <div className='flex justify-end w-full items-center max-md:flex-col max-lg:items-end' >
                                 <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500 active: focus:text-gray-400  focus:ring-violet-300' href='/about'>About </Link>
                                 <Link className='max-lg:px-2 max-lg:text-lg mx-2 hover:border-b-2 hover:border-spacing-2 hover:border-orange-500 active: focus:text-gray-400  focus:ring-violet-300'   href='/'>Work </Link>

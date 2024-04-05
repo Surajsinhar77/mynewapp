@@ -6,7 +6,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 // Initialize CORS middleware
 const cors = Cors({
   // Allow requests from specific origins
-  origin: '/',
+  origin: 'https://mynewapp-peach.vercel.app/',
   methods: ['GET', 'POST', 'OPTIONS'],
 });
 

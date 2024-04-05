@@ -23,8 +23,7 @@ export default function Page() {
 
     async function getAllprojectData() {
         setIsLoading(true); // Set isLoading to true before making the API call
-        // const project = await axios.get('/api/project/getprojects');
-        const project = await getProjects();
+        const project = await axios.get('/api/project/getprojects');
         setProjectList(project.data.data);
     }
 
