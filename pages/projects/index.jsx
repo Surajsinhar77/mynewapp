@@ -19,7 +19,6 @@ function Loader() {
 
 
 export default function Page() {
-    console.log("project index page ", projects)
     const [isLoading, setIsLoading] = useState(true); // Add isLoading state
     const [projectsList, setProjects] = useRecoilState(projectList);
 
