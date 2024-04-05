@@ -20,6 +20,7 @@ export async function getServerSideProps() {
     // Fetch project data from your API route (replace with your actual endpoint)
     // i want to use production url
     const response = await fetch('https://mynewapp-peach.vercel.app/api/project/getprojects');
+    
     const data = await response.json();
     // Return the fetched data as props
     return { props: { projects: data.data } };
