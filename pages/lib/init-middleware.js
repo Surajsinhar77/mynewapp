@@ -11,14 +11,14 @@ const cors = Cors({
 });
 
 // Middleware function to wrap CORS
-export default function initMiddleware(middleware) {
+function applyMiddleware(handler) {
   return (req, res) =>
     new Promise((resolve, reject) => {
-      middleware(req, res, (result) => {
+      corsMiddleware(req, res, (result) => {
         if (result instanceof Error) {
           return reject(result);
         }
-        return resolve(result);
+        return resolve(handler(req, res));
       });
     });
 }
