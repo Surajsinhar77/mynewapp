@@ -16,24 +16,29 @@ function Loader() {
     );
 }
 
-export async function getServerSideProps() {
-    // Fetch project data from your API route (replace with your actual endpoint)
-    // i want to use production url
-    const response = await fetch('https://mynewapp-peach.vercel.app/api/project/getprojects');
-    
-    const data = await response.json();
-    // Return the fetched data as props
-    return { props: { projects: data.data } };
-}
 
-export default function Page({projects}) {
+
+export default function Page() {
     console.log("project index page ", projects)
     const [isLoading, setIsLoading] = useState(true); // Add isLoading state
     const [projectsList, setProjects] = useRecoilState(projectList);
 
+    async function getAllprojectData() {
+        setIsLoading(true); // Set isLoading to true before making the API call
+        const result = await fetch('/api/project/getprojects', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const data = await result.json();
+        setProjects(data.data);
+    }
+
     useEffect(() => {
-        setProjects(projects);
-    },[]);
+        getAllprojectData();
+    }, []);
+    
 
     return (
         <>
