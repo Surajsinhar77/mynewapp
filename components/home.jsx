@@ -14,7 +14,7 @@ export default function Index() {
 
     async function getAllprojectData() {
         setIsLoading(true); // Set isLoading to true before making the API call
-        const result = await fetch('/api/project/getprojects', {
+        const result = await fetch('https://mynewapp-bbsm.onrender.com/api/project/getprojects', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
