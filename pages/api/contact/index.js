@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer')
-import { runCors } from '@/pages/lib/init-middleware';
+import { runCors } from '@/lib/init-middleware';
 
 //Email data from Env file
 const myEmail = process.env.myEmail;

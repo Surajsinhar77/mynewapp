@@ -1,5 +1,5 @@
 import prisma from '@/db/db';
-import { runCors } from '@/pages/lib/init-middleware';
+import { runCors } from '@/lib/init-middleware';
 
 export default async function handler(req, res) {
     await runCors(req, res);

@@ -1,6 +1,6 @@
 import prisma from '@/db/db'; //should be same name from the export  
 import bcrypt from 'bcrypt';
-import { runCors } from '@/pages/lib/init-middleware';
+import { runCors } from '@/lib/init-middleware';
 
 
 export default async function handler(req, res){
