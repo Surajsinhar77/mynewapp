@@ -85,13 +85,13 @@ export default function Project() {
         <h1 className="text-3xl my-8 text-center uppercase">
           {ProjectList?.projectName}
         </h1>
-        <div className="mainContainer-project h-full flex w-full max-lg:flex-col rounded-xl">
-          <div className="mainImage p-3  w-4/5 h-fit max-lg:w-full">
+        <div className="mainContainer-project h-full flex w-full max-lg:flex-col rounded-xl border">
+          <div className="mainImage p-3  w-full h-fit max-lg:w-full">
             <div>
               <img
                 src={`${mainPageImage}`}
                 alt="Project Image"
-                className="w-full object-cover h-[520px] max-lg:h-auto"
+                className="w-full object-cover h-[720px] max-lg:h-auto"
               />
             </div>
 
@@ -115,7 +115,7 @@ export default function Project() {
             <div className="w-full text-center my-3 text-orange-600 underline"><p>Select Image to preview</p></div>
 
           </div>
-          <div className="detailInfo p-5 w-1/5 max-lg:w-full">
+          {/* <div className="detailInfo p-5 w-1/5 max-lg:w-full">
             <div className="sm:my-5 flex lg:flex-col"> 
               <Link href={(ProjectList?.projectLink)? ProjectList?.projectLink : "#"} target={"blank"} className="py-2 px-4 rounded-lg font-bold border-2 bg-red-600 text-white">LIVE</Link>
               <Link href={(ProjectList?.githubLink)? ProjectList?.githubLink:"#"} className="py-2 px-4 rounded-lg font-bold border-2 bg-red-600 text-white">GitHub</Link> 
@@ -143,7 +143,7 @@ export default function Project() {
                             )
                           }
                         </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="mainContainer-project  h-full flex items-center p-7 my-10 flex-col rounded-xl">
