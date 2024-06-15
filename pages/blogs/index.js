@@ -71,7 +71,6 @@ export default function Blog(){
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
         </>
     );

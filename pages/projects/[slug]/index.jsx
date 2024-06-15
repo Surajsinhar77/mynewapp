@@ -8,6 +8,8 @@ import axios from 'axios';
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 import { useRouter } from 'next/router';
 import { storage } from "@/firebase/config";
+import { Divider } from "@mui/material";
+import { Button } from "@headlessui/react";
 
 // export async function getData() {
 //   'use server';
@@ -25,7 +27,7 @@ export default function Project() {
 
   async function getAllprojectData() {
     try {
-      const response = await axios.post('/api/project/getprojectById',{id: slug});
+      const response = await axios.post('/api/project/getprojectById', { id: slug });
       if (response.status === 200) {
         setProjectList(response.data.data);
       }
@@ -81,17 +83,16 @@ export default function Project() {
   return (
     <>
       <div className="sm:w-9/12 w-full m-auto px-5">
-        
         <h1 className="text-3xl my-8 text-center uppercase">
           {ProjectList?.projectName}
         </h1>
-        <div className="mainContainer-project h-full flex w-full max-lg:flex-col rounded-xl border">
+        <div className="mainContainer-project h-full flex w-full max-lg:flex-col rounded-xl ">
           <div className="mainImage p-3  w-full h-fit max-lg:w-full">
             <div>
               <img
                 src={`${mainPageImage}`}
                 alt="Project Image"
-                className="w-full object-cover h-[720px] max-lg:h-auto"
+                className="w-full object-cover h-[720px] max-lg:h-auto rounded-lg"
               />
             </div>
 
@@ -101,7 +102,7 @@ export default function Project() {
                   key={index}
                   onClick={(e) => functionToChange(e)}
                   name={index}
-                  className="imagesOfProject w-28 h-fit border-0 border-orange-600 rounded m-4 hover:shadow-lg cursor-pointer"
+                  className="imagesOfProject w-28 h-fit border border-white rounded m-4 hover:shadow-lg cursor-pointer p-1"
                 >
                   <img
                     src={item}
@@ -112,9 +113,13 @@ export default function Project() {
               ))}
             </div>
 
-            <div className="w-full text-center my-3 text-orange-600 underline"><p>Select Image to preview</p></div>
+            <div className="w-full text-center my-3 text-green-600 ">
+              <p>Select Image to preview</p>
+            </div>
 
           </div>
+
+
           {/* <div className="detailInfo p-5 w-1/5 max-lg:w-full">
             <div className="sm:my-5 flex lg:flex-col"> 
               <Link href={(ProjectList?.projectLink)? ProjectList?.projectLink : "#"} target={"blank"} className="py-2 px-4 rounded-lg font-bold border-2 bg-red-600 text-white">LIVE</Link>
@@ -146,62 +151,34 @@ export default function Project() {
           </div> */}
         </div>
 
-        <div className="mainContainer-project  h-full flex items-center p-7 my-10 flex-col rounded-xl">
-          <span className="uppercase text-2xl font-medium mb-4">
-            Description
+        <div className="my-10">
+          <div className="flex gap-3 items-center justify-center">
+            <span>
+              <Button className="inline-flex items-center gap-2 rounded-md bg-white py-1.5 px-3 text-sm/6 font-semibold text-gray-600 shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-400 hover:text-white data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
+                Live Project Link
+              </Button>
+            </span>
+            <span>
+              <Button className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-600 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
+                Github Link
+              </Button>
+            </span>
+          </div>
+        </div>
+        <div className="mainContainer-project  flex p-5">
+          <span className="w-2/5 flex items-center justify-center">
+            <h1 className="text-6xl text-center text-green-400 uppercase font-sans">About Project</h1>
           </span>
-          <h1>  
-              <span className="text-sm flex">
-                <h1 className="text-lg pr-3">Overview  </h1>  {ProjectList?.projectOverview}
-              </span>
-
-              {
-                ProjectList?.feature?.map((item, index)=>
-                    <span key={index}>
-                        <h1 className="text-lg pr-3"> {item} </h1>
-                    </span>
-                  )
-              }
-                
-              {/*<br/>
-              <span className="text-sm flex">
-                <h1 className="text-lg pr-3">Key Features  </h1>  {ProjectList[0]?.theDiscription?.Key_Features
-                }
-              </span>
-              <br/>
-              <span className="text-sm flex">
-                <h1 className="text-lg pr-3">Product Listings </h1>  {ProjectList[0]?.theDiscription?.Product_Listings
-                }
-              </span>
-              <br/>
-              <span className="text-sm flex">
-                <h1 className="text-lg pr-3">Search and Filters </h1>  {ProjectList[0]?.theDiscription?.Search_and_Filters
-                }
-              </span>
-              <br/>
-              <span className="text-sm flex">
-                <h1 className="text-lg pr-3">Shopping Cart </h1>  {ProjectList[0]?.theDiscription?.Shopping_Cart
-                }
-              </span>
-              <br/>
-              <span className="text-sm flex">
-                <h1 className="text-lg pr-3">Tech Stack </h1>  {ProjectList[0]?.theDiscription?.Skills
-                }
-              </span>*/}
-          </h1>
+          <span className="w-3/5 p-5">
+            <p className="mt-5 text-lg text-justify">  
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, porro corrupti corporis quisquam veritatis voluptas, dolores, tenetur enim eius dolor aliquid laudantium sit odit praesentium quae numquam maiores hic. Odio dolorum cum architecto ipsum rerum tempore veritatis debitis illo numquam. Corporis dignissimos nihil porro cumque quam ad deserunt, deleniti voluptates accusamus recusandae! Magni id asperiores ad vel, suscipit assumenda rem eius nisi reprehenderit accusantium perspiciatis doloribus itaque aliquid tempore architecto dignissimos voluptatem. Ratione illum mollitia expedita, reiciendis id repellendus nihil in harum a provident iste incidunt rerum obcaecati aliquid at adipisci suscipit, beatae, voluptatum aliquam corrupti minima tenetur aspernatur. Dolores.
+            </p>
+          </span>
         </div>
 
         <div className="mainContainer-project h-auto flex items-center p-7 my-10 flex-col rounded-xl">
-          <div className="flex justify-center items-center h-auto w-full ">
-            {/* <VideoPlayer /> */}
-            <iframe
-              className="w-[720px] h-[360px] max-lg:h-auto border-2 border-green-500 rounded-lg"
-              src={ProjectList?.youtubeLink}
-              allowFullScreen={true}
-            ></iframe>
-          </div>
+
         </div>
-        <Footer></Footer>
       </div>
     </>
   );

@@ -123,7 +123,6 @@ return (
                     </form>
                 </div>
             </div>
-            <Footer />
         </div>
         <ToastContainer/>
     </>

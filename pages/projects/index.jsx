@@ -37,7 +37,7 @@ export default function Page() {
     useEffect(() => {
         getAllprojectData();
     }, []);
-    
+
 
     return (
         <>
@@ -52,21 +52,19 @@ export default function Page() {
 
                     <div className="pageImgAndAbout ">
                         {/* Conditional rendering based on isLoading state */}
-                        
-                            <div className="mainImage grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto">
-                                {
-                                    projectsList.map((project, index) => {
-                                        console.log("asdasdasdhjasdjkashdkjas")
-                                        return (
-                                            <ProjectCard key={index} project={project} index={index}/>
-                                        );
-                                    })
-                                }
-                            </div>
-                        
+
+                        <div className="mainImage grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-auto">
+                            {
+                                projectsList.map((project, index) => {
+                                    console.log("asdasdasdhjasdjkashdkjas")
+                                    return (
+                                        <ProjectCard key={index} project={project} index={index} />
+                                    );
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
-                <Footer />
             </div>
         </>
     );
