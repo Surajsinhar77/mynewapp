@@ -1,9 +1,9 @@
-import Navbar from '@/components/navbar';
+import Navbar from '@/pages/components/navbar';
 import ProjectCard from './projectCard';
-import Footer from '@/components/Footer';
+import Footer from '@/pages/components/Footer';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { projectList } from '@/Store/auth';
+import { projectList } from '@/pages/Store/auth';
 import { useRecoilState } from 'recoil';
 // Import the loader component
 // import Loader from './Loader';
@@ -42,10 +42,9 @@ export default function Page() {
     return (
         <>
             <div className="sm:w-9/12 w-full m-auto px-5">
-                <Navbar />
                 <div className="projectContaienr">
                     <div className="mainHeading mb-14">
-                        <h1 className="mainHead text-3xl underline my-12">Projects</h1>
+                        <h1 className="mainHead text-3xl text-center my-12">Projects</h1>
                         <h4 className="subheading text-xl mt-5">
                             Some of my spare time tinkering
                         </h4>

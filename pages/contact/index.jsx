@@ -1,5 +1,5 @@
-import Navbar from "@/components/navbar"
-import Footer from "@/components/Footer"
+import Navbar from "@/pages/components/navbar"
+import Footer from "@/pages/components/Footer"
 import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -56,7 +56,6 @@ export default function Contact() {
 return (
     <>
         <div className="contactContainer sm:w-9/12 w-full m-auto px-5">
-            <Navbar />
             <div className="subContainer w-9/12 m-auto max-sm:w-full">
                 <div className="contactHeader">
                     <h2 className="text-4xl">Contact Me</h2>

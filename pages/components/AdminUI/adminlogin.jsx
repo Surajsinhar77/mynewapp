@@ -4,7 +4,7 @@ import Image from "next/image";
 import axios from 'axios';
 import {useEffect, useState} from "react";
 import { useRouter } from 'next/router';
-import { adminData } from '@/Store/auth';
+import { adminData } from '@/pages/Store/auth';
 import { useRecoilState } from 'recoil';
 import { toast } from 'react-toastify';
 

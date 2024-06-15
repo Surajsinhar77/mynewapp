@@ -1,6 +1,6 @@
 'use client'
-import Navbar from '@/components/navbar';
-import Footer from '@/components/Footer';
+import Navbar from '@/pages/components/navbar';
+import Footer from '@/pages/components/Footer';
 import {FaBookOpen,FaGraduationCap,FaRegNewspaper} from "react-icons/fa6";
 import {FaSuitcase,FaGears} from 'react-icons/fa6';
 import {GiAchievement} from 'react-icons/gi';
@@ -17,11 +17,11 @@ import axios from 'axios';
 export default function About() {
     const [switching, setSwitchingData] =useState(1);
     const subRouterComponents ={
-        1:dynamic(()=>import('@/components/Education')),
-        2:dynamic(()=>import('@/components/Exprience')),
-        3:dynamic(()=>import('@/components/Skill')),
-        4:dynamic(()=>import('@/components/Achievements')),
-        5:dynamic(()=>import('@/components/ResumeViewer')),
+        1:dynamic(()=>import('@/pages/components/Education')),
+        2:dynamic(()=>import('@/pages/components/Exprience')),
+        3:dynamic(()=>import('@/pages/components/Skill')),
+        4:dynamic(()=>import('@/pages/components/Achievements')),
+        5:dynamic(()=>import('@/pages/components/ResumeViewer')),
     }
     const SubRouter = subRouterComponents[switching] || null;
 
@@ -59,7 +59,6 @@ export default function About() {
     return (
         <>
         <div className="sm:w-9/12 w-full m-auto px-5">
-            <Navbar/>
             <div className="mainAboutContainer">
                 <div className="aboutMeInfo">
                     <h1 className='mb-3 text-4xl text-center uppercase'>About me </h1>

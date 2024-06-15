@@ -93,7 +93,7 @@ export default function Index() {
 
                 <div className="ContainerForHomePage mt-5 w-full flex justify-between">
                     <div className="latestProject w-full">
-                        <h3 className="text-2xl text-white underline">Latest Project</h3>
+                        <h3 className="text-2xl text-white text-center">Latest Project</h3>
                         <div className="mx-2 mt-4 h-0.5 rounded-full bg-gray-300"></div>
                         <div className="mx-2 py-9 grid grid-cols-1 md:grid-cols-2 gap-6 m-auto xl:grid-cols-3">
                         {

@@ -1,8 +1,8 @@
-import { adminData } from '@/Store/auth';
+import { adminData } from '@/pages/Store/auth';
 import { useRecoilValue } from 'recoil';
 import { useRouter } from 'next/router';
 import { useEffect , useState} from 'react';
-import ProjectForm from '@/components/ProjectForm';
+import ProjectForm from '@/pages/components/ProjectForm';
 import {app} from '@/firebase/config';
 
 

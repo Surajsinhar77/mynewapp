@@ -1,7 +1,6 @@
 
-// import './globals.css'
-import { Rubik } from 'next/font/google'
-const rubik = Rubik({ subsets: ['latin'] })
+import { Rubik ,Open_Sans } from 'next/font/google'
+const opem_sans = Open_Sans({ subsets: ['latin'] })
 
 
 const metadata = {
@@ -12,7 +11,7 @@ const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={rubik.className}>{children}</body>
+      <body className={opem_sans.className}>{children}</body>
     </html>
   )
 }

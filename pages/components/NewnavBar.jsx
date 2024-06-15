@@ -11,8 +11,8 @@ async function notify(message) {
 const navigation = [
     { name: 'About', href: '/about', current: true },
     { name: 'Work', href: '/', current: false },
-    { name: 'project', href: '/Aboutpage', current: false },
-    { name: 'Contact Us', href: '/contactpage', current: false },
+    { name: 'project', href: '/projects', current: false },
+    { name: 'Contact Us', href: '/contact', current: false },
 ]
 
 function classNames(...classes) {
@@ -28,7 +28,7 @@ export default function Example() {
     return (
         <Disclosure as="nav" className="bg-gray-600 fixed top-0 left-0 right-0 mb-20">
             {({ open }) => (
-                <>
+                <Fragment>
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                         <div className="relative flex h-16 items-center justify-between">
                             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -75,14 +75,14 @@ export default function Example() {
                             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                                 {
                                     (<>
-                                        <button
+                                        {/* <button
                                             type="button"
                                             className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                         >
                                             <span className="absolute -inset-1.5" />
                                             <span className="sr-only">View notifications</span>
                                             <BellIcon className="h-6 w-6" aria-hidden="true" />
-                                        </button>
+                                        </button> */}
 
                                         {/* Profile dropdown */}
                                         <Menu as="div" className="relative ml-3">
@@ -92,7 +92,7 @@ export default function Example() {
                                                     <span className="sr-only">Open user menu</span>
                                                     <img
                                                         className="h-8 w-8 rounded-full"
-                                                        src={'https://www.gravatar.com/avatar/'}
+                                                        src={'/Images/profile.png'}
                                                         alt="profile_picture"
                                                     />
                                                 </Menu.Button>
@@ -113,7 +113,7 @@ export default function Example() {
                                                                 href="/"
                                                                 className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                                                             >
-                                                                {user?.name} <span className='text-blue-300'> Profile </span>
+                                                                <span className='text-blue-300'> Profile </span>
                                                             </Link>
                                                         )}
                                                     </Menu.Item>
@@ -169,7 +169,7 @@ export default function Example() {
                             ))}
                         </div>
                     </Disclosure.Panel>
-                </>
+                </Fragment>
             )}
         </Disclosure>
     )

@@ -1,6 +1,5 @@
-import Navbar from "@/components/navbar";
-import Blogs from "@/components/Blogs";
-import Footer from "@/components/Footer";
+import Blogs from "@/pages/components/Blogs";
+import Footer from "@/pages/components/Footer";
 import blogData from "./blogData.json";
 // Blogs page
 
@@ -10,7 +9,6 @@ export default function Blog(){
     return (
         <>
         <div className="sm:w-9/12 w-full m-auto px-5">
-            <Navbar />
             <p className="text-red-500 underline font-bold uppercase text-3xl"> Under the development </p>
             <div className="BlogContainer flex justify-between">
             <div className="Searchbar  w-1/3">

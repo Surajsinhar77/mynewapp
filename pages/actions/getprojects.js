@@ -1,4 +1,4 @@
-import prisma from '@/db/db';
+import prisma from '@/pages/about/db/db';
 
 
 export async function getProjects() {

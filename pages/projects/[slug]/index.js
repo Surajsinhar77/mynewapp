@@ -1,8 +1,8 @@
 // "use client";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/pages/components/navbar";
+import Footer from "@/pages/components/Footer";
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { ref, listAll, getDownloadURL } from "firebase/storage";
@@ -81,7 +81,6 @@ export default function Project() {
   return (
     <>
       <div className="sm:w-9/12 w-full m-auto px-5">
-        <Navbar />
         
         <h1 className="text-3xl my-8 text-center uppercase">
           {ProjectList?.projectName}
